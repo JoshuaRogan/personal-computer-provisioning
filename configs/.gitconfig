@@ -1,0 +1,32 @@
+[pull]
+	rebase = true
+[user]
+	name = Josh
+	email = jrogan@wikia-inc.com
+[filter "lfs"]
+	smudge = git-lfs smudge %f
+	required = true
+	clean = git-lfs clean %f
+[alias]
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff
+	lg = log -p
+	cp = cherry-pick
+	po = push origin
+	l = log --graph --decorate
+	rbc = rebase --continue
+	cam = commit -a -m
+	A = add -A
+	hidef = update-index --assume-unchanged
+	showf = update-index --no-assume-unchanged
+[core]
+	excludesfile = /Users/joshrogan/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Users/joshrogan/Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
