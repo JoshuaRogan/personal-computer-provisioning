@@ -91,7 +91,7 @@ alias mamp_php='tail -f /Applications/MAMP/logs/php_error.log'
 
 ## Work Laptop Specific
 #alias wikia-push='rsync -av --delete --progress /Users/joshrogan/projects/wikia/ jrogan@dev-jrogan:/usr/wikia/source/app/'
-
+alias wikia='ssh jrogan@dev-jrogan'
 
 ############################################## EXTRAS ##############################################
 # Not Sure What this does
@@ -102,5 +102,5 @@ alias mamp_php='tail -f /Applications/MAMP/logs/php_error.log'
 
 ############################################## WIKIA DEV BOX ##############################################
 #
-#PROMPT="%{$fg[yellow]%}WIKIA%{$reset_color%} ${PROMPT}"
-#RPROMPT="%{$fg[yellow]%}WIKIA%{$reset_color%} ${RPROMPT}"
+# PROMPT="%{$fg[yellow]%}WIKIA%{$reset_color%}${PROMPT}"
+# RPROMPT="${RPROMPT}%{$fg[yellow]%}WIKIA%{$reset_color%}"
