@@ -74,17 +74,30 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+############################################## PATH ##############################################
+export PATH=${PATH}:/usr/local/opt/gettext/bin
+export NVM_DIR="/Users/joshrogan/.nvm"
+
+
+############################################## Aliases ##############################################
 eval $(thefuck --alias)
 alias cal='cal | grep --color -EC6 "\b$(date +%e | sed "s/ //g")"'
-export PATH=${PATH}:/usr/local/opt/gettext/bin
+alias reload='source ~/.zshrc'
+alias profile='vim ~/.zshrc'
 
-export NVM_DIR="/Users/joshrogan/.nvm"
+alias mamp_php='tail -f /Applications/MAMP/logs/php_error.log'
+
+## Work Laptop Specific
+alias wikia-push='rsync -av --delete --progress /Users/joshrogan/projects/wikia/ jrogan@dev-jrogan:/usr/wikia/source/app/'
+
+
+
+############################################## EXTRAS ##############################################
+# Not Sure What this does
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Load NVM
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
