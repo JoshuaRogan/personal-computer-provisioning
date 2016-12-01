@@ -90,14 +90,17 @@ alias profile='vim ~/.zshrc'
 alias mamp_php='tail -f /Applications/MAMP/logs/php_error.log'
 
 ## Work Laptop Specific
-alias wikia-push='rsync -av --delete --progress /Users/joshrogan/projects/wikia/ jrogan@dev-jrogan:/usr/wikia/source/app/'
-
+#alias wikia-push='rsync -av --delete --progress /Users/joshrogan/projects/wikia/ jrogan@dev-jrogan:/usr/wikia/source/app/'
 
 
 ############################################## EXTRAS ##############################################
 # Not Sure What this does
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+#test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Load NVM
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
+############################################## WIKIA DEV BOX ##############################################
+#
+#PROMPT="%{$fg[yellow]%}WIKIA%{$reset_color%} ${PROMPT}"
+#RPROMPT="%{$fg[yellow]%}WIKIA%{$reset_color%} ${RPROMPT}"
