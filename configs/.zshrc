@@ -86,6 +86,7 @@ eval $(thefuck --alias)
 alias cal='cal | grep --color -EC6 "\b$(date +%e | sed "s/ //g")"'
 alias reload='source ~/.zshrc'
 alias profile='vim ~/.zshrc'
+alias gpo='git pull origin'
 
 alias mamp_php='tail -f /Applications/MAMP/logs/php_error.log'
 
