@@ -87,12 +87,14 @@ alias cal='cal | grep --color -EC6 "\b$(date +%e | sed "s/ //g")"'
 alias reload='source ~/.zshrc'
 alias profile='vim ~/.zshrc'
 alias gpo='git pull origin'
-
-alias mamp_php='tail -f /Applications/MAMP/logs/php_error.log'
+alias header='curl -I'
+alias info="pinfo -a"
+alias man="pinfo -a -m"
 
 ## Work Laptop Specific
 #alias wikia-push='rsync -av --delete --progress /Users/joshrogan/projects/wikia/ jrogan@dev-jrogan:/usr/wikia/source/app/'
 alias wikia='ssh jrogan@dev-jrogan'
+alias mamp_php='tail -f /Applications/MAMP/logs/php_error.log'
 
 ############################################## EXTRAS ##############################################
 # Not Sure What this does
