@@ -22,3 +22,5 @@ tree
 unixodbc
 wget
 xz
+httpstat
+httpie

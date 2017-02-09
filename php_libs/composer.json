@@ -1,0 +1,30 @@
+{
+    "name": "joshrogan/php_libs",
+    "authors": [
+        {
+            "name": "Josh",
+            "email": "jrogan@wikia-inc.com"
+        }
+    ],
+    "require": {
+        "raveren/kint": "^1.0",
+        "katzgrau/klogger": "dev-master",
+        "phpunit/php-timer": "^1.0",
+        "florianwolters/component-util-singleton": "^0.3.2",
+        "illuminate/support": "^5.4",
+        "monolog/monolog": "^1.22"
+    },
+    "autoload": {
+        "classmap": [
+        ],
+        "psr-4": {
+            "Josh\\": "src/",
+            "Upstream\\": "upstream/"
+        },
+        "files": [
+            "config.php",
+            "upstream/config.php",
+            "upstream/globals.php"
+        ]
+    }
+}
