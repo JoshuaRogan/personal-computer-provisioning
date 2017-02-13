@@ -64,10 +64,3 @@ class JLog {
         self::$queue_self[] = $msg;
 	}
 }
-
-set_error_handler(
-    function ($errno, $errstr, $errfile, $errline) {
-        JLog::queue("$errno - $errstr");
-        return false;
-    }
-);

@@ -122,4 +122,7 @@ alias search='ag'
 #alias make='make -f Makefile.custom'
 #alias maked='make -f Makefile'
 
-
+################################# SSH STUFF #################################
+alias droplet-root='ssh root@droplet.joshuarogan.com'
+alias droplet-josh='ssh josh@droplet.joshuarogan.com'
+alias droplet='droplet-josh'

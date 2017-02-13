@@ -8,6 +8,19 @@ use Monolog\ErrorHandler;
 use Psr\Log\LoggerInterface;
 
 
+
+/**
+ * Class JLogger
+ * @package Josh
+ * @method static JLogger warn(string $msg, array $context)
+ * @method static JLogger info(string $msg, array $context)
+ * @method static JLogger notice(string $msg, array $context)
+ * @method static JLogger error(string $msg, array $context)
+ * @method static JLogger debug(string $msg, array $context)
+ * @method static JLogger alert(string $msg, array $context)
+ * @method static JLogger emergency(string $msg, array $context)
+ * @method static JLogger log(string $level, string $message, array $context = array())
+ */
 class JLogger {
     use SingletonTrait;
 

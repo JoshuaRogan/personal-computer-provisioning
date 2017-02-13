@@ -10,5 +10,3 @@ class Config {
     const JLOG_ENDS_ENABLED = false;
     ################## LOGGER ##################
 }
-
-d(Config::LOG_LEVEL);
