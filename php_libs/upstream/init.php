@@ -16,7 +16,7 @@ class Init extends \Josh\Init {
 
     public static function start() {
         self::setFlags();
-        self::errorHandling(Config::APP);
+        self::errorHandling(Config::APP, Config::LOG_LEVEL, Config::LOG);
         self::logStartEnd();
         ReplaceImages::start();
     }

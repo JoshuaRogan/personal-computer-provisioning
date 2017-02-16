@@ -11,15 +11,16 @@ class Config extends \Josh\Config
     const APP = 'Upstream';
     const APP_PATH = '/Users/joshrogan/projects/fandom/';
     const PROXY_PATH = __DIR__;
-    const HOME_PATH = 'upstream.dev';
+    const HOME_PATH = 'upstream.wikia.com';
     const HOME_URL = 'http://' . self::HOME_PATH;
     const USE_BUNDLED_JS = true;
     ################## Info ##################
 
     ########### UPSTREAM LOGGER ###########
-    const LOG_LEVEL = Logger::CRITICAL;
-    const FULL_DEBUG = true;
+    const LOG_LEVEL = Logger::DEBUG;
+    const FULL_DEBUG = false;
     const DEBUG_DISPLAY = false || self::FULL_DEBUG;
+    const LOG_FILE = 'valet.log.upstream.log';
     ########### UPSTREAM LOGGER ###########
 
     ############## Image Replacement ##############
@@ -64,7 +65,7 @@ class Config extends \Josh\Config
         ################## WP Auth ##################
 
         ################### DEBUGGING ###################
-        ini_set('error_log', Config::LOG);
+        ini_set('error_log', Config::LOG_MIX);
         ################### DEBUGGING ###################
     }
 }

@@ -22,15 +22,26 @@ use function str_contains;
  * @method static JLogger log(string $level, string $message, array $context = array())
  */
 class JLogger {
-    const LOCATION = Config::LOG;
-    const LEVEL = Config::LOG_LEVEL;
 
+    /**
+     * @var Logger $logger
+     */
     protected static $logger;
 
-    public static function init($name = 'JLogger') {
+    /**
+     * @param string $name
+     * @param integer $level
+     * @param string $location
+     */
+    public static function init($name = 'JLogger', $level = Config::LOG_LEVEL, $location = Config::Log) {
         self::$logger = new Logger($name);
         ErrorHandler::register(self::$logger);
-        self::$logger->pushHandler(new StreamHandler(Config::LOG, self::LEVEL));
+
+        if ($location !== Config::LOG_MIX) {
+            self::$logger->pushHandler(new StreamHandler($location, $level));
+        }
+
+        self::$logger->pushHandler(new StreamHandler(Config::LOG_MIX, $level));
     }
 
     public static function __callStatic( $name, $arguments ) {

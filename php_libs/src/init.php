@@ -24,8 +24,8 @@ class Init {
     }
 
     ################################ LOGGING ################################
-    public static function errorHandling($name = 'JLogger') {
-        JLogger::init($name);
+    public static function errorHandling($name = 'JLogger', $level = Config::LOG_LEVEL, $location = Config::LOG) {
+        JLogger::init($name, $level, $location);
     }
 
     public static function logStart() {
