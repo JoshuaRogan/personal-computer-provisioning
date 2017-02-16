@@ -2,6 +2,7 @@
 namespace Upstream;
 
 use Josh\Application;
+use Josh\JLogger;
 
 class Init extends \Josh\Init {
 

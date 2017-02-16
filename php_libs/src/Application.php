@@ -51,6 +51,6 @@ class Application {
 
     public function end() {
         Init::globalEnd();
-        $this->fire('start');
+        $this->fire('end');
     }
 }

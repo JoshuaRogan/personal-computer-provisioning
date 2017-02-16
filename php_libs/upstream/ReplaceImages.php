@@ -14,7 +14,7 @@ class ReplaceImages {
     public static function start() {
         if ( Config::EXTERNAL_IMAGES ) {
             ob_start(function ($buffer) {
-                $root = Config::HOME_URL;
+                $root = Config::homeUrl();
                 $content = str_replace( "$root/wp-content/uploads", "http://fandom.wikia.com/wp-content/uploads", $buffer );
                 $content = str_replace( "http://fandom.wikia.com/articles", "$root/articles", $content );
                 $content = str_replace( "http://fandom.wikia.com/videos", "$root/videos", $content );

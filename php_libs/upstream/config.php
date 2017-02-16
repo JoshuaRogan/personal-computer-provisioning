@@ -4,19 +4,22 @@ namespace Upstream;
 use Josh\JLog;
 use Monolog\Logger;
 
-class Config extends \Josh\Config {
+class Config extends \Josh\Config
+{
     #################################### Constants ####################################
     ################## Info ##################
     const APP = 'Upstream';
     const APP_PATH = '/Users/joshrogan/projects/fandom/';
     const PROXY_PATH = __DIR__;
-    const HOME_URL = 'http://upstream.dev';
+    const HOME_PATH = 'upstream.dev';
+    const HOME_URL = 'http://' . self::HOME_PATH;
     const USE_BUNDLED_JS = true;
     ################## Info ##################
 
     ########### UPSTREAM LOGGER ###########
-    const LOG_LEVEL = Logger::debug;
+    const LOG_LEVEL = Logger::CRITICAL;
     const FULL_DEBUG = true;
+    const DEBUG_DISPLAY = false || self::FULL_DEBUG;
     ########### UPSTREAM LOGGER ###########
 
     ############## Image Replacement ##############
@@ -24,7 +27,12 @@ class Config extends \Josh\Config {
     ############## Image Replacement ##############
     #################################### Constants ####################################
 
-    public static function wpConfig() {
+    public static function homeUrl() {
+        return 'http://' . (string) array_get($_SERVER, 'HTTP_HOST', self::HOME_PATH);
+    }
+
+    public static function wpConfig()
+    {
         ################## FLAGS ##################
         define('WP_DEBUG', true);
         define('WP_DEBUG_DISPLAY', Config::DEBUG_DISPLAY);
