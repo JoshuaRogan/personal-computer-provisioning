@@ -2,7 +2,6 @@
 
 namespace Josh;
 
-
 use FlorianWolters\Component\Util\Singleton\SingletonTrait;
 use \PHP_Timer;
 

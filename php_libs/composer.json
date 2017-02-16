@@ -12,7 +12,8 @@
         "phpunit/php-timer": "^1.0",
         "florianwolters/component-util-singleton": "^0.3.2",
         "illuminate/support": "^5.4",
-        "monolog/monolog": "^1.22"
+        "monolog/monolog": "^1.22",
+        "psy/psysh": "@stable"
     },
     "autoload": {
         "classmap": [
@@ -22,9 +23,6 @@
             "Upstream\\": "upstream/"
         },
         "files": [
-            "config.php",
-            "upstream/config.php",
-            "upstream/globals.php"
         ]
     }
 }

@@ -6,7 +6,7 @@ use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Monolog\ErrorHandler;
 use Psr\Log\LoggerInterface;
-
+use function str_contains;
 
 
 /**
@@ -22,22 +22,28 @@ use Psr\Log\LoggerInterface;
  * @method static JLogger log(string $level, string $message, array $context = array())
  */
 class JLogger {
-    use SingletonTrait;
-
-    const LOCATION = '/usr/local/var/log/valet.log.mono.log';
-    const DIR = '/usr/local/var/log/';
+    const LOCATION = Config::LOG;
     const LEVEL = Config::LOG_LEVEL;
 
-    protected $logger;
+    protected static $logger;
 
-    private function __construct() {
-        $this->logger = new Logger('Upstream');
-        ErrorHandler::register($this->logger);
-        $this->logger->pushHandler(new StreamHandler(self::LOCATION, self::LEVEL));
+    public static function init($name = 'JLogger') {
+        self::$logger = new Logger($name);
+        ErrorHandler::register(self::$logger);
+        self::$logger->pushHandler(new StreamHandler(Config::LOG, self::LEVEL));
     }
 
     public static function __callStatic( $name, $arguments ) {
-        $logger = self::getInstance()->logger;
-        return call_user_func_array( [ $logger, $name ], $arguments );
+        // Prefetch logs
+        if ( Config::DISABLE_AJAX_LOGS && str_contains( $_SERVER['REQUEST_URI'] , 'ajax' )) {
+            return;
+        }
+
+        // Prefetch logs
+        if ( Config::DISABLE_PREFETCH_LOGS && array_get($_SERVER, 'HTTP_PURPOSE', false) === 'prefetch' ) {
+            return;
+        }
+
+        return call_user_func_array( [ self::$logger, $name ], $arguments );
     }
 }
