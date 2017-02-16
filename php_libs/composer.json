@@ -13,7 +13,7 @@
         "florianwolters/component-util-singleton": "^0.3.2",
         "illuminate/support": "^5.4",
         "monolog/monolog": "^1.22",
-        "psy/psysh": "@stable"
+        "psy/psysh": "dev-master"
     },
     "autoload": {
         "classmap": [

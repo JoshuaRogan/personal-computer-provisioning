@@ -1,7 +1,17 @@
 <?php
 namespace Upstream;
 
+use Josh\Application;
+
 class Init extends \Josh\Init {
+
+    public static function init() {
+        $app = new Application(Config::PROXY_PATH, Config::APP_PATH);
+        $app->on('start', '\Upstream\Init::start');
+        $app->on('end', '\Upstream\Init::end');
+        return $app;
+    }
+
 
     public static function start() {
         self::setFlags();

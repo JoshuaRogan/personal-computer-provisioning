@@ -4,17 +4,11 @@ namespace Upstream;
 use Josh\Application;
 
 // Get autoloader
-require __DIR__ . '/../autoloader.php';
+require_once __DIR__ . '/../autoloader.php';
 
-// Create App
-$app = new Application( Config::PROXY_PATH, Config::APP_PATH  );
+$app = Init::init();
 
-// Events
-$app->on('start', '\Upstream\Init::start');
-$app->on('end', '\Upstream\Init::end');
-
-// Why?
+// Run Application
 $app->run();
 require Init::getWordpressEntrypoint();
 $app->end();
-

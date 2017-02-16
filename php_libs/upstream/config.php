@@ -11,6 +11,7 @@ class Config extends \Josh\Config {
     const APP_PATH = '/Users/joshrogan/projects/fandom/';
     const PROXY_PATH = __DIR__;
     const HOME_URL = 'http://upstream.dev';
+    const USE_BUNDLED_JS = true;
     ################## Info ##################
 
     ########### UPSTREAM LOGGER ###########
@@ -23,15 +24,14 @@ class Config extends \Josh\Config {
     ############## Image Replacement ##############
     #################################### Constants ####################################
 
-    public static function wpConfig(){
+    public static function wpConfig() {
         ################## FLAGS ##################
         define('WP_DEBUG', true);
         define('WP_DEBUG_DISPLAY', Config::DEBUG_DISPLAY);
-        define('WP_DEBUG_LOG', false);
-        define('HIDE_ERRORS', Config::HIDE_ERRORS);
-        define('USE_BUNDLED_JS', true);
+        define('USE_BUNDLED_JS', Config::USE_BUNDLED_JS);
         define('WP_HOME', Config::HOME_URL);
         define('WP_SITEURL', Config::HOME_URL);
+        define('WP_DEBUG_LOG', false);
         ################## FLAGS ##################
 
         ################## WP Database ##################
@@ -40,7 +40,7 @@ class Config extends \Josh\Config {
         define('DB_PASSWORD', 'root');
         define('DB_HOST', '127.0.0.1');
         define('DB_CHARSET', 'utf8');
-        global $table_prefix; // TODO: Do I need this?
+        global $table_prefix;
         $table_prefix = 'wp_';
         ################## WP Database ##################
 
@@ -56,14 +56,6 @@ class Config extends \Josh\Config {
         ################## WP Auth ##################
 
         ################### DEBUGGING ###################
-        if (Config::HIDE_ERRORS) {
-            error_reporting(0);
-            ini_set('display_startup_errors', 'Off');
-            ini_set('log_errors', 'Off');
-            ini_set('html_errors', 'Off');
-            ini_set('display_errors', 'Off');
-        }
-
         ini_set('error_log', Config::LOG);
         ################### DEBUGGING ###################
     }
