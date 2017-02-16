@@ -20,9 +20,13 @@
         ],
         "psr-4": {
             "Josh\\": "src/",
-            "Upstream\\": "upstream/"
+            "Upstream\\": "upstream/",
+            "FanProfile\\": "fan-profile/"
         },
         "files": [
         ]
+    },
+    "require-dev": {
+        "theofidry/psysh-bundle": "^3.0"
     }
 }

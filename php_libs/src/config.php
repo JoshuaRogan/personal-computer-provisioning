@@ -27,4 +27,8 @@ class Config {
     const LOG = self::LOG_DIR . self::LOG_FILE;
     ###### Log Location ######
     ################## LOGGER ##################
+
+    public static function homeUrl() {
+        return 'http://' . (string) array_get($_SERVER, 'HTTP_HOST');
+    }
 }
