@@ -18,6 +18,7 @@ class ReplaceImages {
                 $content = str_replace( "$root/wp-content/uploads", "http://fandom.wikia.com/wp-content/uploads", $buffer );
                 $content = str_replace( "http://fandom.wikia.com/articles", "$root/articles", $content );
                 $content = str_replace( "http://fandom.wikia.com/videos", "$root/videos", $content );
+                //                $content = preg_replace( '@https?://fandom[.]wikia[.]com(?=/(videos|articles))@', $root , $content );
                 return $content;
             });
         }

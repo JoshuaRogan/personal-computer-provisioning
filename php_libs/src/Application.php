@@ -19,15 +19,26 @@ class Application {
     protected $realAppPath;
 
     /**
+     * @var string $namespace
+     */
+    protected $namespace;
+
+    /**
      * Application constructor.
      * @param string $proxyAppPath
      * @param string $realAppPath
+     * @param string $namespace
      */
-    public function __construct($proxyAppPath, $realAppPath ) {
+    public function __construct($proxyAppPath, $realAppPath, $namespace = __NAMESPACE__ ) {
         $this->eventHandlers = new Collection();
         $this->proxyAppPath = realpath($proxyAppPath);
         $this->realAppPath = realpath($realAppPath);
+        $this->namespace = $namespace;
+        $this->setConfig();
     }
+
+    public function setConfig(){}
+
 
     public function run() {
         $this->start();

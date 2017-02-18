@@ -1,12 +1,14 @@
 <?php
 namespace Josh;
 
-use FlorianWolters\Component\Util\Singleton\SingletonTrait;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Monolog\ErrorHandler;
 use Psr\Log\LoggerInterface;
 use function str_contains;
+use function str_plural;
+use function str_replace;
+use function strtoupper;
 
 
 /**
@@ -29,12 +31,19 @@ class JLogger {
     protected static $logger;
 
     /**
+     * @var string $name
+     */
+    protected static $name;
+
+    /**
      * @param string $name
      * @param integer $level
      * @param string $location
      */
     public static function init($name = 'JLogger', $level = Config::LOG_LEVEL, $location = Config::Log) {
-        self::$logger = new Logger($name);
+
+        self::$name = strtoupper($name);
+        self::$logger = new Logger(self::$name);
         ErrorHandler::register(self::$logger);
 
         if ($location !== Config::LOG_MIX) {
@@ -45,16 +54,29 @@ class JLogger {
     }
 
     public static function __callStatic( $name, $arguments ) {
-        // Prefetch logs
-        if ( Config::DISABLE_AJAX_LOGS && str_contains( $_SERVER['REQUEST_URI'] , 'ajax' )) {
-            return;
-        }
+        $label = array_get($arguments, '2', null);
+        $label = $label ? self::$name . '.' . $label  : self::$name;
+        $ajaxTest = Config::LOG_AJAX_REQUESTS && self::isAjax();
+        $prefetchTest = Config::LOG_PREFETCH_REQUESTS && self::isPrefetch();
 
-        // Prefetch logs
-        if ( Config::DISABLE_PREFETCH_LOGS && array_get($_SERVER, 'HTTP_PURPOSE', false) === 'prefetch' ) {
-            return;
-        }
+        self::callLogger([ self::$logger->withName('AJAX.' . self::$name), $name ], $arguments, $ajaxTest );
+        self::callLogger([ self::$logger->withName('PREFETCH.' . self::$name), $name ], $arguments, $prefetchTest );
+        self::callLogger([ self::$logger->withName($label), $name ], $arguments, self::isNormal() );
+    }
 
-        return call_user_func_array( [ self::$logger, $name ], $arguments );
+    public static function isAjax() {
+        return str_contains( $_SERVER['REQUEST_URI'] , 'ajax' );
+    }
+
+    public static function isPrefetch() {
+        return array_get($_SERVER, 'HTTP_PURPOSE', false) === 'prefetch';
+    }
+
+    public static function isNormal() {
+        return !(self::isAjax() || self::isPrefetch());
+    }
+
+    private static function callLogger( $instance = [], $args, $test = true ) {
+        return $test ? call_user_func_array( $instance, $args ) : false;
     }
 }

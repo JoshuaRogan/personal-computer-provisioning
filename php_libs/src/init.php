@@ -5,6 +5,7 @@ class Init {
 
     public static function globalStart() {
         self::setXdebugLevel();
+        self::timezone();
     }
 
     public static function globalEnd() {
@@ -28,13 +29,28 @@ class Init {
         JLogger::init($name, $level, $location);
     }
 
+    private static function getLogStartEndData() {
+        $data = [
+            'SERVER' => $_SERVER,
+            'REQUEST' => $_REQUEST,
+            'GET' => $_GET,
+            'POST' => $_POST,
+        ];
+
+        if (Config::LOG_VERBOSE) {
+            $data['CONSTANTS'] = get_defined_constants();
+        }
+
+        return $data;
+    }
+
     public static function logStart() {
-        JLogger::debug('Request Started', $_SERVER);
+        JLogger::debug('Start', self::getLogStartEndData(), 'REQUEST.START');
     }
 
     public static function logEnd() {
         register_shutdown_function(function(){
-            JLogger::debug('Request Completed', $_SERVER);
+            JLogger::debug('End', self::getLogStartEndData(), 'REQUEST.END');
         });
     }
 
@@ -44,5 +60,9 @@ class Init {
     }
     ################################ LOGGING ################################
 
+    public static function timezone() {
+//        date_default_timezone_set('UTC');
+//        ini_set('date.timezone', 'UTC');
+    }
 
 }

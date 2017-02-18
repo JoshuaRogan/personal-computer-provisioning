@@ -13,12 +13,13 @@ class Config {
     const LOG_ALL = false;
     const HIDE_ERRORS = false && !self::FULL_DEBUG;
     const LOG_LEVEL = Logger::DEBUG || self::LOG_ALL;
+    const LOG_VERBOSE = false || self::LOG_ALL;
     ##### Super Filters #####
 
     ###### Log Filter ######
     const DEBUG_DISPLAY = false || self::LOG_ALL;
-    const DISABLE_PREFETCH_LOGS = true || self::LOG_ALL;
-    const DISABLE_AJAX_LOGS = true || self::LOG_ALL;
+    const LOG_PREFETCH_REQUESTS = false || self::LOG_ALL;
+    const LOG_AJAX_REQUESTS = false || self::LOG_ALL;
     ###### Log Filter ######
 
     ###### Log Location ######

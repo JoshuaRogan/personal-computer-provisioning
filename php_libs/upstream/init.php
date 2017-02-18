@@ -7,7 +7,8 @@ use Josh\JLogger;
 class Init extends \Josh\Init {
 
     public static function init() {
-        $app = new Application(Config::PROXY_PATH, Config::APP_PATH);
+        $app = new Application(Config::PROXY_PATH, Config::APP_PATH, __NAMESPACE__);
+
         $app->on('start', '\Upstream\Init::start');
         $app->on('end', '\Upstream\Init::end');
         return $app;
@@ -16,7 +17,7 @@ class Init extends \Josh\Init {
 
     public static function start() {
         self::setFlags();
-        self::errorHandling(Config::APP, Config::LOG_LEVEL, Config::LOG);
+        self::errorHandling(Config::APP , Config::LOG_LEVEL, Config::LOG);
         self::logStartEnd();
         ReplaceImages::start();
     }
