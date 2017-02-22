@@ -302,27 +302,39 @@ function clr_dump
 '
 }
 
-function shw_grey { echo -e '\033[1;30m'"$1"'\033[0m'; }
-function shw_norm { echo    "$1"; }
-function shw_info { echo -e '\033[1;34m'"$1"'\033[0m'; }
-function shw_warn { echo -e '\033[1;33m'"$1"'\033[0m'; }
-function shw_err  { echo -e '\033[1;31mERROR: '"$1"'\033[0m'; }
-function shw_info_light { clr_layer $CLR_BRIGHT "$@"; }
+function shw_info_light {
+    clr_bright clr_bold "     [INFO]" -n;
+    clr_bright " $@"
+}
 
-
+function shw_info {
+    clr_blue clr_bold "[INFO]" -n;
+    clr_white " $@"
+}
 function shw_success
 {
-    clr_layer $CLR_GREEN "[SUCCESS]" -n;
-    clr_layer $CLR_WHITE " $@";
+    clr_green clr_bold "[SUCCESS]" -n;
+    clr_white " $@";
 }
 
 function shw_start
 {
-    clr_layer $CLR_BLUE "[START]" -n;
-    clr_layer $CLR_WHITE " $@";
+    clr_blue clr_bold "[START]" -n;
+    clr_white " $@";
 }
 
 function shw_failure
 {
-    clr_redb clr_white "[FAILED] $@ ";
+    clr_redb clr_bold "[FAILED] $@ "
+}
+
+function shw_warn
+{
+    clr_brown clr_bold "[WARNING] $@"
+}
+
+function shw_err
+{
+    clr_red clr_bold "[ERROR]" -n;
+    clr_white " $a"
 }

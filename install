@@ -9,11 +9,11 @@ all()
 }
 
 if [ "$(uname)" == "Darwin" ]; then
-    shw_info  "OSX System Detected\n"
+    shw_info  "OSX System Detected"
     all
     ./install_scripts/osx.sh
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    shw_info "Linux System Detected\n"
+    shw_info "Linux System Detected"
     all
 fi
 
