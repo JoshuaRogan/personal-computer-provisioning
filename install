@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+source ./utils/colors.sh
+
+all()
+{
+    shw_start "Installing"
+    ./add_symlinks
+}
+
+if [ "$(uname)" == "Darwin" ]; then
+    shw_info  "OSX System Detected\n"
+    all
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    shw_info "Linux System Detected\n"
+    all
+fi
+
+
+shw_success "Installing"

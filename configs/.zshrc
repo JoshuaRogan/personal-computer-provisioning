@@ -1,5 +1,10 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/joshrogan/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -30,7 +35,7 @@ ZSH_THEME="theunraveler"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+ COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -49,7 +54,7 @@ ZSH_THEME="theunraveler"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(nvm git bundler osx command-not-found Composer common-aliases npm pip vagrant sudo gulp z sublime yeoman extract)
+plugins=(nvm git bundler osx command-not-found Composer common-aliases npm pip vagrant sudo gulp z sublime yeoman extract h httpie laravel5)
 
 # User configuration
 
@@ -74,36 +79,55 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-
-
-############################################## PATH ##############################################
-export PATH=${PATH}:/usr/local/opt/gettext/bin
-export NVM_DIR="/Users/joshrogan/.nvm"
-
-
-############################################## Aliases ##############################################
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 eval $(thefuck --alias)
 alias cal='cal | grep --color -EC6 "\b$(date +%e | sed "s/ //g")"'
+export PATH=${PATH}:/usr/local/opt/gettext/bin
+
+export NVM_DIR="/Users/joshrogan/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+alias mamp_php='less +F -R /Applications/MAMP/logs/php_error.log'
+alias mamp_php='tail -f /Applications/MAMP/logs/php_error.log'
+alias valet_log='tail -f /usr/local/var/log/valet.log'
+#alias valet_log='tail -n 50 -f /usr/local/var/log/valet.log | grep --color "START"'
+#alias valet_log='lnav /usr/local/var/log/valet.log'
+alias valet_queued_log='lnav /usr/local/var/log/valet.log.queue.log'
+
+
+alias wikia-push='rsync -av --delete --progress /Users/joshrogan/projects/wikia/ jrogan@dev-jrogan:/usr/wikia/source/app/'
+alias wikia='ssh jrogan@dev-jrogan'
+alias wikia-deploy='ssh jrogan@deploy-s1'
 alias reload='source ~/.zshrc'
 alias profile='vim ~/.zshrc'
 alias gpo='git pull origin'
-alias header='curl -I'
-alias info="pinfo -a"
-alias man="pinfo -a -m"
+alias composer='php -n /usr/local/bin/composer'
 
-## Work Laptop Specific
-#alias wikia-push='rsync -av --delete --progress /Users/joshrogan/projects/wikia/ jrogan@dev-jrogan:/usr/wikia/source/app/'
-alias wikia='ssh jrogan@dev-jrogan'
-alias mamp_php='tail -f /Applications/MAMP/logs/php_error.log'
+function gitpush {
+	git push origin HEAD
+}
 
-############################################## EXTRAS ##############################################
-# Not Sure What this does
-#test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# CURL Helpers
+alias http='time http'
+alias header='httpstat'
+alias search='ag'
 
-# Load NVM
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# tabtab source for yarn package
+# uninstall by removing these lines or running `tabtab uninstall yarn`
+[[ -f /Users/joshrogan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/joshrogan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
 
-############################################## WIKIA DEV BOX ##############################################
-#
-# PROMPT="%{$fg[yellow]%}WIKIA%{$reset_color%}${PROMPT}"
-# RPROMPT="${RPROMPT}%{$fg[yellow]%}WIKIA%{$reset_color%}"
+#alias make='make -f Makefile.custom'
+#alias maked='make -f Makefile'
+
+################################# SSH STUFF #################################
+alias droplet-root='ssh root@droplet.joshuarogan.com'
+alias droplet-josh='ssh josh@droplet.joshuarogan.com'
+alias droplet='droplet-josh'

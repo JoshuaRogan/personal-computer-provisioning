@@ -24,7 +24,7 @@ class Config {
 
     ###### Log Location ######
     const LOG_DIR = '/usr/local/var/log/';
-    const LOG_MIX_FILE = 'valet.log.all.log';
+    const LOG_MIX_FILE = 'valet.all.log';
     const LOG_FILE = 'valet.log.mono.log';
     const LOG = self::LOG_DIR . self::LOG_FILE;
     const LOG_MIX = self::LOG_DIR . self::LOG_MIX_FILE;

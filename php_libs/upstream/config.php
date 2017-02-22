@@ -42,6 +42,15 @@ class Config extends \Josh\Config
         define('WP_HOME', Config::homeUrl());
         define('WP_SITEURL', Config::homeUrl());
         define('WP_DEBUG_LOG', false);
+//        define( 'WP_ALLOW_MULTISITE', true );
+//        define('MULTISITE', true);
+//        define('SUBDOMAIN_INSTALL', true);
+//        define('DOMAIN_CURRENT_SITE', Config::homeUrl());
+//        define('PATH_CURRENT_SITE', '/');
+//        define('SITE_ID_CURRENT_SITE', 1);
+//        define('BLOG_ID_CURRENT_SITE', 1);
+//        define( 'SUNRISE', 'on' );
+//        define('DISABLE_WP_CRON', true);
         ################## FLAGS ##################
 
         ################## WP Database ##################
@@ -68,18 +77,5 @@ class Config extends \Josh\Config
         ################### DEBUGGING ###################
         ini_set('error_log', Config::LOG_MIX);
         ################### DEBUGGING ###################
-
-//
-//        define( 'WP_ALLOW_MULTISITE', true );
-////        define('MULTISITE', true);
-////        define('SUBDOMAIN_INSTALL', true);
-//        define('DOMAIN_CURRENT_SITE', Config::homeUrl());
-//        define('PATH_CURRENT_SITE', '/');
-//        define('SITE_ID_CURRENT_SITE', 1);
-//        define('BLOG_ID_CURRENT_SITE', 1);
-//        define( 'SUNRISE', 'on' );
-//        define('DISABLE_WP_CRON', true);
-//        phpinfo();
-//        die();
     }
 }

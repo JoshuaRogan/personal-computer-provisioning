@@ -1,4 +1,5 @@
 #!/bin/bash
 
 #Setup up proper permissions
+shw_info "All files with .sh to -exec"
 find . -name "*.sh" -exec chmod +x {} \;

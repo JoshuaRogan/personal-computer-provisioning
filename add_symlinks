@@ -1,0 +1,31 @@
+#!/bin/bash
+source ./utils/colors.sh
+
+shw_start "Symlinking Files"
+
+CONFIG_DIR=${PWD}/configs/
+
+
+
+#   $1 = destination (ex ~/)
+#   $2 = filename
+link_config()
+{
+    # Make a backup
+    shw_info_light "Linking ${CONFIG_DIR}${2} ${1}${2}"
+    mv ${1}${2} ${1}${2}.$(date +%s).bak
+    # Symlink file
+    ln -s ${CONFIG_DIR}${2} ${1}${2}
+}
+
+link_config ~/ .gitconfig
+link_config ~/ .zshrc
+link_config ~/.config/htop/ htoprc
+
+
+
+
+
+
+
+shw_success "Symlinking Files"

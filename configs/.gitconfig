@@ -19,9 +19,11 @@
 	l = log --graph --decorate
 	rbc = rebase --continue
 	cam = commit -a -m
+	ca = commit -a
 	A = add -A
 	hidef = update-index --assume-unchanged
 	showf = update-index --no-assume-unchanged
+	one = log -p -1 --pretty=full
 [core]
 	excludesfile = /Users/joshrogan/.gitignore_global
 [difftool "sourcetree"]
