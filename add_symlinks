@@ -13,6 +13,7 @@ link_config()
 {
     mv_backup_file ${1} ${2}
     link_file ${CONFIG_DIR} $1 $2
+    clr_reset " "
 }
 
 link_config ~/ .gitconfig

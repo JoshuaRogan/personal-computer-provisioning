@@ -9,7 +9,7 @@ source ./colors.sh 2> /dev/null
 mv_backup_file()
 {
     # Make a backup
-    shw_info_light "Backing up ${1}${2} -> ${1}${2}.$(date +%s).bak"
+    shw_info_light "mv ${1}${2} -> ${1}${2}.$(date +%s).bak"
     mv ${1}${2} ${1}${2}.$(date +%s).bak
 }
 
@@ -18,6 +18,6 @@ mv_backup_file()
 #   $3 = filename
 link_file()
 {
-    shw_info_light "Linking ${1}${3} -> ${2}${3}"
+    shw_info_light "ln -s ${1}${3} ${2}${3}"
     ln -s ${1}${3} ${2}${3}
 }
