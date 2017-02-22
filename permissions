@@ -1,5 +1,5 @@
 #!/bin/bash
-
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 #Setup up proper permissions
 shw_info "All files with .sh to -exec"
 find . -name "*.sh" -exec chmod +x {} \;

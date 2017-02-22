@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+INSTALL_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source ./utils/colors.sh
 
 all()
@@ -11,6 +11,7 @@ all()
 if [ "$(uname)" == "Darwin" ]; then
     shw_info  "OSX System Detected\n"
     all
+    ./install_scripts/osx.sh
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     shw_info "Linux System Detected\n"
     all

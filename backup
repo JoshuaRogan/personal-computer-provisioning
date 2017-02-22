@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+BACKUP_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source ./utils/colors.sh
 
 all()
@@ -7,9 +7,12 @@ all()
     shw_start "Backing up"
 }
 
+
+
 if [ "$(uname)" == "Darwin" ]; then
     shw_info  "OSX System Detected\n"
     all
+    ./backup_scripts/osx.sh
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     shw_info "Linux System Detected\n"
     all
