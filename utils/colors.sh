@@ -302,8 +302,14 @@ function clr_dump
 '
 }
 
+spaces="     "
 function shw_info_light {
-    clr_bright clr_bold "     [INFO]" -n;
+    clr_bright clr_bold "${spaces}[INFO]" -n;
+    clr_bright " $@"
+}
+
+function shw_info_light_flush {
+    clr_bright clr_bold "[INFO]" -n;
     clr_bright " $@"
 }
 
