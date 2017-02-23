@@ -14,11 +14,12 @@ main() {
         shw_info "OSX System Detected"
         brew update
         brew upgrade
+        brew cleanup
     elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
         shw_info "Linux System Detected"
-        sudo apt update
-        sudo apt upgrade
-        sudo apt autoremove
+        sudo apt --yes update
+        sudo apt --yes upgrade
+        sudo apt --yes autoremove
     fi
     shw_success "Updating"
 }
