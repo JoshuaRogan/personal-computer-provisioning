@@ -1,6 +1,6 @@
-@daily bash /Users/joshrogan/projects/personal-computer-provisioning/cron/daily.sh
-@hourly bash /Users/joshrogan/projects/personal-computer-provisioning/cron/hourly.sh
-@weekly bash /Users/joshrogan/projects/personal-computer-provisioning/cron/weekly.sh
-@reboot bash /Users/joshrogan/projects/personal-computer-provisioning/cron/reboot.sh
-* * * * * * bash /Users/joshrogan/projects/personal-computer-provisioning/cron/hourly.sh
-* * * * * * echo "hello" >> /Users/joshrogan/projects/personal-computer-provisioning/cron/cron.all.log
+@daily /Users/joshrogan/projects/personal-computer-provisioning/cron/daily.sh
+@hourly /Users/joshrogan/projects/personal-computer-provisioning/cron/hourly.sh
+@weekly /Users/joshrogan/projects/personal-computer-provisioning/cron/weekly.sh
+@reboot /Users/joshrogan/projects/personal-computer-provisioning/cron/reboot.sh
+* * * * * /Users/joshrogan/projects/personal-computer-provisioning/cron/hourly.sh
+* * * * * /Users/joshrogan/projects/personal-computer-provisioning/cron/cron.all.log
