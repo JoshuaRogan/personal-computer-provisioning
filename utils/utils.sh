@@ -25,3 +25,18 @@ link_file()
 cron_log() {
     echo "[$(date)] $1"  >> ${UTILS_DIR}/../cron/cronlog
 }
+
+# $1 source dir
+# $2 dest dir
+# $3 filename
+function backup_with_ts()
+{
+    ts=$(date +%s)
+    cat "${1}${3}" >> "${2}${3}.${ts}"
+}
+
+function backup_with_ts_clear()
+{
+    backup_with_ts "${1}" "${2}" "${3}"
+    echo -n > "${1}${3}"
+}
