@@ -10,6 +10,15 @@ install_homebrew() {
     brew doctor
 }
 
+install_lnav() {
+    local filename=lnav-0.8.1-os-x.zip
+    wget https://github.com/tstack/lnav/releases/download/v0.8.1/$filename
+    unzip $filename
+    rm -f $filename
+    cp lnav-0.8.1/lnav /usr/local/bin/lnav4
+    rm -rf lnav-0.8.1
+}
+
 setup_iterm() {
     brew install zsh zsh-completions
 }
@@ -24,6 +33,8 @@ setup_dev() {
     #Vim
     git clone https://github.com/amix/vimrc.git ~/.vim_runtime
     sh ~/.vim_runtime/install_awesome_vimrc.sh
+
+    install_lnav
 }
 
 
