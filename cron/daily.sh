@@ -10,8 +10,6 @@ function daily_log() {
     cron_log "DAILY - $1"
 }
 
-
-
 # $1 source dir
 # $2 dest dir
 # $3 filename
@@ -27,11 +25,19 @@ function backup_with_ts_clear()
     echo -n > "${1}${3}"
 }
 
-
 ################# COPY LOGS ################
-daily_log "Copying valet.all.log to Google Drive Archives"
-backup_with_ts_clear "/usr/local/var/log/" "$GOOGLE_LOGS" "valet.all.log"
+function copy_logs() {
+    daily_log "Copying valet.all.log to Google Drive Archives"
+    backup_with_ts_clear "/usr/local/var/log/" "$GOOGLE_LOGS" "valet.all.log"
 
-daily_log "Copying cron log to Google Archives"
-backup_with_ts "$CRON_DIR/" "$GOOGLE_LOGS" "cronlog"
+    daily_log "Copying cron log to Google Archives"
+    backup_with_ts "$CRON_DIR/" "$GOOGLE_LOGS" "cronlog"
+}
 ################# COPY  LOGS ################
+
+copy_logs
+
+# output log size
+size=$(du -sh "${GOOGLE_LOGS}")
+daily_log "Log dir $size"
+
