@@ -9,7 +9,7 @@ all() {
 
 
 main() {
-    shw_start_init "Installing"
+    shw_start_init "Installing programs on OSX or Ubuntu computer"
     all
     if [ "$(uname)" == "Darwin" ]; then
         shw_info "OSX System Detected"
@@ -18,6 +18,8 @@ main() {
         shw_info "Linux System Detected"
         ./install_scripts/ubuntu.sh
     fi
-    shw_success_final "Installing"
+
+    source "${HOME}/.zshrc" && shw_success ".zshrc reloaded"
+    shw_success_final "Installing programs on OSX or Ubuntu computer"
 }
 main

@@ -16,43 +16,28 @@ update_terminals() {
 
   #update oh my zsh
   cd "${ZDOTDIR:-$HOME}/.oh-my-zsh" && git pull && git submodule update --init --recursive && shw_success "Updated oh-my-zsh"
+
+  cd $INSTALL_DIR
 }
 
 all() {
     update_terminals
-    #Update pip
     pip install --upgrade pip && shw_success "Updated PIP"
-
-    #thefuck
-    sudo -H pip install thefuck
-
     update_z
 }
 
-apt(){
-  sudo apt --yes update -qq && shw_success "apt update"
-  sudo apt --yes upgrade -qq && shw_success "apt upgrade"
-  sudo apt --yes autoremove -qq && shw_success "apt autoremove"
-}
-
-brew() {
-  brew update
-  brew upgrade
-  brew cleanup
-}
-
 main() {
-    shw_start_init "Updating"
+    shw_start_init "Updating OSX or Ubuntu computer"
+    all
     if [ "$(uname)" == "Darwin" ]; then
         shw_info "OSX System Detected"
-        all
-        brew
+        ./install_scripts/update-osx.sh
     elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
         shw_info "Linux System Detected"
-        all
-        apt
-
+        ./install_scripts/update-ubuntu.sh
     fi
-    shw_success_final "Updated Completed"
+
+    source "${HOME}/.zshrc" && shw_success ".zshrc reloaded"
+    shw_success_final "Updating OSX or Ubuntu computer"
 }
 main

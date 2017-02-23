@@ -325,7 +325,7 @@ function shw_success
 
 function shw_success_final
 {
-    clr_greenb clr_bold "[SUCCESS] $@"
+    clr_greenb clr_bold "Success: $@"
 }
 
 function shw_start
@@ -336,12 +336,12 @@ function shw_start
 
 function shw_start_init
 {
-    clr_blueb clr_bold "[START] $@";
+    clr_blueb clr_bold "Starting: $@";
 }
 
 function shw_failure_final
 {
-    clr_redb clr_bold "[FAILED] $@ "
+    clr_redb clr_bold "Failed: $@ "
 }
 
 function shw_failure
