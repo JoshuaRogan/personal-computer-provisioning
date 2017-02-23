@@ -5,6 +5,7 @@ UTILS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source ${UTILS_DIR}/lib/bash-common-helpers/bash-common-helpers.sh
 source ./lib/bash-common-helpers/bash-common-helpers.sh 2> /dev/null
 
+
 # Helper Functions
 #source ${UTILS_DIR}/lib/bash-booster/build/bashbooster.sh
 #source ./lib/bash-booster/build/bashbooster.sh 2> /dev/null
@@ -12,6 +13,8 @@ source ./lib/bash-common-helpers/bash-common-helpers.sh 2> /dev/null
 # Colors
 source ${UTILS_DIR}/colors.sh
 source ./colors.sh 2> /dev/null
+
+
 
 #   $1 source
 #   $2 dest
@@ -38,13 +41,13 @@ cron_log() {
 # $1 source dir
 # $2 dest dir
 # $3 filename
-function backup_with_ts()
+backup_with_ts()
 {
     ts=$(date +%s)
     cat "${1}${3}" >> "${2}${3}.${ts}"
 }
 
-function backup_with_ts_clear()
+backup_with_ts_clear()
 {
     backup_with_ts "${1}" "${2}" "${3}"
     echo -n > "${1}${3}"

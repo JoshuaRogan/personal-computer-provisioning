@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 INSTALL_UBUNTU_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 source ${INSTALL_UBUNTU_DIR}/../utils/utils.sh

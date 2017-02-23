@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 INSTALL_ALL_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 source ${INSTALL_ALL_DIR}/../utils/utils.sh

@@ -15,7 +15,7 @@ main() {
     if [ "$(uname)" == "Darwin" ]; then
         shw_info "OSX System Detected"
         ./install_scripts/osx.sh
-    elif [ "$(exprsubstr$(uname-s)15)" == "Linux" ]; then
+    elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
         shw_info "Linux System Detected"
         ./install_scripts/ubuntu.sh
     fi

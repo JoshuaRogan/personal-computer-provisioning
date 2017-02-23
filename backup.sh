@@ -12,7 +12,7 @@ function main() {
         shw_info "OSX System Detected"
         all
         ./backup_scripts/osx.sh
-    elif [ "$(exprsubstr$(uname-s)15)" == "Linux" ]; then
+    elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
         shw_info "Linux System Detected"
         all
         ./backup_scripts/ubuntu.sh
