@@ -2,6 +2,7 @@
 USE_PRESTO=true
 USE_OHMYZSH=false
 
+export EDITOR=vim
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 

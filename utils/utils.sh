@@ -21,3 +21,7 @@ link_file()
     shw_info_light "ln -s ${1}${3} ${2}${3}"
     ln -s ${1}${3} ${2}${3}
 }
+
+cron_log() {
+    echo "[$(date)] $1"  >> ${UTILS_DIR}/../cron/cronlog
+}
