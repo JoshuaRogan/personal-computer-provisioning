@@ -2,6 +2,8 @@
 # Path to your oh-my-zsh installation.
 USE_PRESTO=true
 USE_OHMYZSH=false
+PROVISION_DIR="${HOME}/projects/personal-computer-provisioning/"
+PROVISION_CONFIG_DIR="${PROVISION_DIR}/configs"
 
 ################################# Prezto #################################
 if [ "$USE_PRESTO" = true ] ; then
@@ -12,7 +14,7 @@ if [ "$USE_PRESTO" = true ] ; then
     fi
 
     # Customize to your needs...
-    $HOME/.oh-my-zsh/plugins/z/z.sh
+    . "${PROVISION_CONFIG_DIR}/z.sh"
 fi
 
 

@@ -9,7 +9,7 @@ all() {
 
 
 main() {
-    shw_start "Installing"
+    shw_start_init "Installing"
     cmn_ask_to_continue "Do you want to install programs"
     all
     if [ "$(uname)" == "Darwin" ]; then
@@ -19,8 +19,6 @@ main() {
         shw_info "Linux System Detected"
         ./install_scripts/ubuntu.sh
     fi
-    shw_success "Installing"
+    shw_success_final "Installing"
 }
 main
-
-

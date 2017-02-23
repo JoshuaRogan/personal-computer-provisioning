@@ -323,10 +323,25 @@ function shw_success
     clr_white " $@";
 }
 
+function shw_success_final
+{
+    clr_greenb clr_bold "[SUCCESS] $@"
+}
+
 function shw_start
 {
     clr_blue clr_bold "[START]" -n;
     clr_white " $@";
+}
+
+function shw_start_init
+{
+    clr_blueb clr_bold "[START] $@";
+}
+
+function shw_failure_final
+{
+    clr_redb clr_bold "[FAILED] $@ "
 }
 
 function shw_failure
