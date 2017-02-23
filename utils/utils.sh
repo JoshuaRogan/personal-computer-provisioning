@@ -2,8 +2,8 @@
 UTILS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Helper Functions
-source ${UTILS_DIR}/lib/bash-common-helpers/bash-common-helpers.sh
-source ./lib/bash-common-helpers/bash-common-helpers.sh 2> /dev/null
+source ${UTILS_DIR}/lib/bash-helpers/bash-common-helpers.sh
+source ./lib/bash-helpers/bash-common-helpers.sh 2> /dev/null
 
 
 # Helper Functions
