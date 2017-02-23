@@ -147,8 +147,10 @@ function gitpush {
 }
 
 function gitpull {
-    git pull origin master --no-rebase && git pull origin dev --no-rebase
+    git pull origin master --no-rebase 2> /dev/null
+    git pull origin dev --no-rebase 2> /dev/null
 }
+
 ########### SSH STUFF ###########
 alias droplet-root='ssh root@droplet.joshuarogan.com'
 alias droplet-josh='ssh josh@droplet.joshuarogan.com'
