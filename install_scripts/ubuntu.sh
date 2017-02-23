@@ -4,4 +4,11 @@ INSTALL_UBUNTU_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source ${INSTALL_UBUNTU_DIR}/../utils/utils.sh
 source ./../utils/utils.sh 2> /dev/null
 
-#if file exists install
+install_httpstat() {
+    pip install httpstat
+}
+
+main() {
+    install_httpstat
+}
+main
