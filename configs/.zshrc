@@ -19,7 +19,7 @@ if [ "$USE_PRESTO" = true ] ; then
     fi
 
     # Customize to your needs...
-    . /Users/joshrogan/.oh-my-zsh/plugins/z/z.sh
+    $HOME/.oh-my-zsh/plugins/z/z.sh
 fi
 
 
