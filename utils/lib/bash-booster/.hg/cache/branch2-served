@@ -1,0 +1,17 @@
+382e671e3252a7508010d25d6b4140018f9e23d3 265
+1ef8a5d299fa95f45bc9251dc750d6f33cfdacc2 c apt-upgrade
+9657e578f54f5c240dd8f20959c910f3c1615136 c assert-helpers
+e86237e60b805f4f407809b84b3e36f180387b0e c augeas-support
+049d73da0f2f29d286b52bee0e6ef6b56bf6b5bf c bb-sync-dir
+cbba978e9279af10a5abfdd3ff10fde2a84d39b8 c bsd-compatibility
+382e671e3252a7508010d25d6b4140018f9e23d3 o default
+50534d818c6743dec38cf37fd7e8da0fc017b6e1 c event-delay-fix
+15f2f7431ab7674c7f74ef6e07796afe808968b8 c gelin/contributorsmd-edited-online-with-bitbuc-1410017677314
+dbdc6cc7b06b19c5b12f48c5cb9a177a2b5cc0d4 c iptables
+4d407ec1eeea78145ff1b706c78b1e2dfd748ec9 c properties
+62efabe89c9dd2fe8956b6ea78cf147db0bc79c2 c skip-download-tests
+66a1af4b331c1e2fe18c27a91fce79431870ede7 c sync-dir-one-way
+ef5774c2f0fd6f836a1aaa500388196ed0a3cfce c sync-file-event-fix
+d6836920373ce30aaafc90e33f083a8723dc2fba c sync-file-mode-fix
+a263f274fbbed17933dc3cdb69259099ca73870b c sync-fire-event
+4bca1b9fbe2a58a9885a65bdbae763a6eb797ed3 c v0.2

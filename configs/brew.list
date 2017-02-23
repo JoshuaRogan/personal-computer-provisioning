@@ -31,6 +31,7 @@ libyaml
 lnav
 mcrypt
 memcached
+mercurial
 mhash
 mysql
 nethogs
@@ -49,6 +50,7 @@ php71-xdebug
 pinentry
 pinfo
 pth
+python
 python3
 readline
 redis
@@ -66,3 +68,4 @@ wget
 xz
 yarn
 zsh
+zsh-completions

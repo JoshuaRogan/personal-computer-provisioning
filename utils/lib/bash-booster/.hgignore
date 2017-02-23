@@ -1,0 +1,10 @@
+syntax: glob
+
+.vagrant
+bashbooster.sh
+*.sublime-*
+*.bb-workspace
+*.zip
+docs/www/*.html
+.idea/*
+.pip

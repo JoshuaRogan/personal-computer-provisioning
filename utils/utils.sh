@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 UTILS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+# Helper Functions
+source ${UTILS_DIR}/lib/bash-common-helpers/bash-common-helpers.sh
+source ./lib/bash-common-helpers/bash-common-helpers.sh 2> /dev/null
+
+# Helper Functions
+#source ${UTILS_DIR}/lib/bash-booster/build/bashbooster.sh
+#source ./lib/bash-booster/build/bashbooster.sh 2> /dev/null
+
+# Colors
 source ${UTILS_DIR}/colors.sh
 source ./colors.sh 2> /dev/null
 
