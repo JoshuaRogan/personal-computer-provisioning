@@ -20,9 +20,14 @@ function copy_logs() {
 }
 ################# COPY  LOGS ################
 
-copy_logs
-
-# output log size
-size=$(du -sh "${GOOGLE_LOGS}")
-hourly_log "Log dir $size"
-
+main() {
+    if [ "$(uname)" == "Darwin" ]; then
+        copy_logs
+        # output log size
+        size=$(du -sh "${GOOGLE_LOGS}")
+        hourly_log "Log dir $size"
+    elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+        hourly_log "nothing"
+    fi
+}
+main

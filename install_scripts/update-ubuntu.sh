@@ -20,4 +20,3 @@ main() {
     thefuck
 }
 main
-

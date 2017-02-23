@@ -35,7 +35,7 @@ link_file()
 }
 
 cron_log() {
-    echo "[$(date)] $1"  >> ${UTILS_DIR}/../cron/cronlog
+    echo "[$(date)] $(uname) ${1}"  >> ${UTILS_DIR}/../cron/cron.log
 }
 
 # $1 source dir

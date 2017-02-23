@@ -1,0 +1,3 @@
+@daily sudo bash /home/josh/projects/personal-computer-provisioning/cron/daily.sh
+@weekly sudo bash /home/josh/projects/personal-computer-provisioning/cron/weekly.sh
+@hourly sudo bash /home/josh/projects/personal-computer-provisioning/cron/hourly.sh
