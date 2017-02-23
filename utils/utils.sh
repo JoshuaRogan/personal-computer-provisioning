@@ -52,3 +52,31 @@ backup_with_ts_clear()
     backup_with_ts "${1}" "${2}" "${3}"
     echo -n > "${1}${3}"
 }
+
+
+function assert_command_is_available {
+  local cmd=${1}
+  type ${cmd} >/dev/null 2>&1 || 0
+}
+
+
+function assert_file_exists {
+  local file=${1}
+  if [[ ! -f "${file}" ]]; then
+    shw_warn "${2}"
+    return 1
+  fi
+
+  return 0
+}
+
+
+function assert_file_does_not_exist {
+  local file=${1}
+  if [[ -e "${file}" ]]; then
+    shw_warn "${2}"
+    return 1
+  fi
+
+  return 0
+}
