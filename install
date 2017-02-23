@@ -10,7 +10,6 @@ all() {
 
 main() {
     shw_start_init "Installing"
-    cmn_ask_to_continue "Do you want to install programs"
     all
     if [ "$(uname)" == "Darwin" ]; then
         shw_info "OSX System Detected"
