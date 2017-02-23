@@ -11,21 +11,18 @@ function hourly_log() {
 }
 
 ################# COPY LOGS ################
-function copy_logs() {
+function hourly_copy_logs() {
     hourly_log "Copying valet.all.log to Google Drive Archives"
     backup_with_ts_clear "/usr/local/var/log/" "$GOOGLE_LOGS" "valet.all.log"
 
     hourly_log "Copying cron log to Google Archives"
-    backup_with_ts "$CRON_DIR/" "$GOOGLE_LOGS" "cronlog"
+    backup_with_ts "$CRON_DIR/" "$GOOGLE_LOGS" "cron.log"
 }
 ################# COPY  LOGS ################
 
 main() {
     if [ "$(uname)" == "Darwin" ]; then
-        copy_logs
-        # output log size
-        size=$(du -sh "${GOOGLE_LOGS}")
-        hourly_log "Log dir $size"
+        hourly_log "nothing"
     elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
         hourly_log "nothing"
     fi

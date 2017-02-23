@@ -5,9 +5,12 @@ source ./utils/utils.sh
 main() {
     shw_start_init "Installing cron tasks on ubuntu or osx"
     if [ "$(uname)" == "Darwin" ]; then
+        local OSX_JOSH_TAB="/private/var/at/tabs/joshrogan"
         shw_info "OSX System Detected"
+        sudo cp "${CRON_SETUP_DIR}/configs/osx.crontab" $OSX_JOSH_TAB
         clr_blue "\nCurrent Crontab:"
-        sudo crontab -l
+        crontab -l
+        clr_blue "\n"
     elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
         shw_info "Linux System Detected"
         shw_info "cp ${CRON_SETUP_DIR}/configs/ubuntu.root.crontab /var/spool/cron/crontabs/root"

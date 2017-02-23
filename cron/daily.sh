@@ -11,18 +11,18 @@ function daily_log() {
 }
 
 ################# COPY LOGS ################
-function copy_logs() {
+function daily_copy_logs() {
     daily_log "Copying valet.all.log to Google Drive Archives"
     backup_with_ts_clear "/usr/local/var/log/" "$GOOGLE_LOGS" "valet.all.log"
 
     daily_log "Copying cron log to Google Archives"
-    backup_with_ts "$CRON_DIR/" "$GOOGLE_LOGS" "cronlog"
+    backup_with_ts "$CRON_DIR/" "$GOOGLE_LOGS" "cron.log"
 }
 ################# COPY  LOGS ################
 
 main() {
     if [ "$(uname)" == "Darwin" ]; then
-        copy_logs
+        daily_copy_logs
         # output log size
         size=$(du -sh "${GOOGLE_LOGS}")
         daily_log "Log dir $size"

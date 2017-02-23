@@ -1,3 +1,6 @@
-@daily sudo bash /home/josh/projects/personal-computer-provisioning/cron/daily.sh
-@weekly sudo bash /home/josh/projects/personal-computer-provisioning/cron/weekly.sh
-@hourly sudo bash /home/josh/projects/personal-computer-provisioning/cron/hourly.sh
+@daily bash /Users/joshrogan/projects/personal-computer-provisioning/cron/daily.sh
+@hourly bash /Users/joshrogan/projects/personal-computer-provisioning/cron/hourly.sh
+@weekly bash /Users/joshrogan/projects/personal-computer-provisioning/cron/weekly.sh
+@reboot bash /Users/joshrogan/projects/personal-computer-provisioning/cron/reboot.sh
+* * * * * * bash /Users/joshrogan/projects/personal-computer-provisioning/cron/hourly.sh
+* * * * * * echo "hello" >> /Users/joshrogan/projects/personal-computer-provisioning/cron/cron.all.log

@@ -13,7 +13,9 @@ function weekly_log() {
 
 main() {
     if [ "$(uname)" == "Darwin" ]; then
-        weekly_log "nothing"
+        weekly_log "Copying cron log to Google Archives and clearing"
+        backup_with_ts_clear "$CRON_DIR/" "$GOOGLE_LOGS" "cronlog"
+        bash "${CRON_DIR}/../install_scripts/update-osx.sh" &> "${CRON_DIR}/cron.all.log"
     elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
         weekly_log "Updating ubuntu & removing bit torrent files"
         bash "${CRON_DIR}/../install_scripts/update-ubuntu.sh" &> "${CRON_DIR}/cron.all.log"
