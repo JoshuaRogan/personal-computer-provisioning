@@ -8,7 +8,17 @@ install_httpstat() {
     pip install httpstat
 }
 
+install_lnav() {
+    local filename=lnav-0.8.1-linux-64bit.zip
+    wget https://github.com/tstack/lnav/releases/download/v0.8.1/$filename
+    unzip $filename
+    rm -f $filename
+    cp lnav-0.8.1/lnav /usr/local/bin/lnav
+    rm -rf lnav-0.8.1
+}
+
 main() {
     install_httpstat
+    install_lnav
 }
 main
