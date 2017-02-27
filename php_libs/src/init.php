@@ -25,8 +25,9 @@ class Init {
     }
 
     ################################ LOGGING ################################
-    public static function errorHandling($name = 'JLogger', $level = Config::LOG_LEVEL, $location = Config::LOG) {
+    public static function errorHandling($name = 'JLogger', $level = Config::LOG_LEVEL, $location = Config::LOG_MIX) {
         JLogger::init($name, $level, $location);
+        ini_set('error_log', Config::LOG_MIX);
     }
 
     private static function getLogStartEndData() {
@@ -46,11 +47,12 @@ class Init {
 
     public static function logStart() {
         JLogger::debug('Start', self::getLogStartEndData(), 'REQUEST.START');
+        define('JOSH_APP_START', $_SERVER['REQUEST_TIME_FLOAT'] ?? microtime(true));
     }
 
     public static function logEnd() {
         register_shutdown_function(function(){
-            JLogger::debug('End', self::getLogStartEndData(), 'REQUEST.END');
+            JLogger::debug('End: '.(microtime(true) - JOSH_APP_START ?? 0) . 's', self::getLogStartEndData(), 'REQUEST.END');
         });
     }
 

@@ -77,5 +77,7 @@ class Config extends \Josh\Config
         ################### DEBUGGING ###################
         ini_set('error_log', Config::LOG_MIX);
         ################### DEBUGGING ###################
+
+        set_time_limit( 1000);
     }
 }

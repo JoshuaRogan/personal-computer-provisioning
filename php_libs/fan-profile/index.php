@@ -10,5 +10,5 @@ $app = Init::init();
 
 // Run Application
 $app->run();
-require Init::getFanProfileEntryPoint();
+require_once Init::getFanProfileEntryPoint();
 $app->end();
