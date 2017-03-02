@@ -118,6 +118,7 @@ fi
 export EDITOR=vim
 export PATH=${PATH}:/usr/local/opt/gettext/bin
 export PATH=${PATH}:~/go/bin
+export GOPATH=~/go
 export NVM_DIR="/Users/joshrogan/.nvm"
 
 

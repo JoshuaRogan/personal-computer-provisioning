@@ -17,10 +17,14 @@ install_lnav() {
     rm -rf lnav-0.8.1
 }
 
+setup_dev(){
+    sudo apt --yes install golang cowsay fortune fortunes-off
+}
+
 main() {
     cmn_ask_to_continue "Do you want to install Ubuntu Programs"
     install_httpstat
     install_lnav
-    install_go
+    setup_dev
 }
 main
