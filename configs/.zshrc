@@ -5,9 +5,17 @@ USE_OHMYZSH=false
 PROVISION_DIR="${HOME}/projects/personal-computer-provisioning/"
 PROVISION_CONFIG_DIR="${PROVISION_DIR}/configs"
 
+################################# GREETING #################################
+function welcome(){
+    cowsay -p -f stegosaurus "Welcome $(whoami)"
+    fortune -io
+}
+welcome
+################################# GREETING #################################
+
 ################################# Prezto #################################
 if [ "$USE_PRESTO" = true ] ; then
-    echo "Using prezto"
+#    echo "Using prezto"
 
     if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
       source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -20,7 +28,7 @@ fi
 
 ################################# Oh My ZSH #################################
 if [ "$USE_OHMYZSH" = true ] ; then
-    echo "Using oh-my-zsh"
+#    echo "Using oh-my-zsh"
     export ZSH=~/.oh-my-zsh
     ZSH_THEME="theunraveler"
     source $ZSH/oh-my-zsh.sh
@@ -106,13 +114,19 @@ fi
 
 
 ################################# Misc #################################
+########### Exports ###########
 export EDITOR=vim
+export PATH=${PATH}:/usr/local/opt/gettext/bin
+export PATH=${PATH}:~/go/bin
+export NVM_DIR="/Users/joshrogan/.nvm"
+
+
 #fpath=(/usr/local/share/zsh-completions $fpath)
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 eval $(thefuck --alias)
-export PATH=${PATH}:/usr/local/opt/gettext/bin
 
-export NVM_DIR="/Users/joshrogan/.nvm"
+
+
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 

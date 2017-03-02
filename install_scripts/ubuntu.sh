@@ -21,5 +21,6 @@ main() {
     cmn_ask_to_continue "Do you want to install Ubuntu Programs"
     install_httpstat
     install_lnav
+    install_go
 }
 main

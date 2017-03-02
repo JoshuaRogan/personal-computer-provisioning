@@ -1,4 +1,5 @@
 <?php
+
 namespace Josh {
 
 
@@ -6,6 +7,9 @@ namespace Josh {
 
     function dd(...$args)
     {
+        ob_end_clean();
+        \Kint::enabled(true);
+        header('Content-Type: text/html');
         ddd(...$args);
     }
 
@@ -32,4 +36,14 @@ namespace {
     function jlog($msg, $data = [], $label = null){
         \Josh\JLogger::debug($msg, $data, $label);
     }
+
+    function dd(...$args)
+    {
+        ob_end_clean();
+        \Kint::enabled(true);
+        header('Content-Type: text/html');
+        ddd(...$args);
+    }
 }
+
+

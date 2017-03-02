@@ -6,9 +6,9 @@ use Josh\Application;
 // Get autoloader
 require_once __DIR__ . '/../autoloader.php';
 
-$app = Init::init();
+$joshApp = Init::init();
 
 // Run Application
-$app->run();
+$joshApp->run();
 require_once Init::getFanProfileEntryPoint();
-$app->end();
+$joshApp->end();

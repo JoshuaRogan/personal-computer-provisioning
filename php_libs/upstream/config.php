@@ -25,7 +25,7 @@ class Config extends \Josh\Config
     ########### UPSTREAM LOGGER ###########
 
     ############## Image Replacement ##############
-    const EXTERNAL_IMAGES = true;
+    const EXTERNAL_IMAGES = false;
     ############## Image Replacement ##############
     #################################### Constants ####################################
 

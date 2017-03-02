@@ -24,7 +24,6 @@
             "FanProfile\\": "fan-profile/"
         },
         "files": [
-            "src/globals.php"
         ]
     },
     "require-dev": {

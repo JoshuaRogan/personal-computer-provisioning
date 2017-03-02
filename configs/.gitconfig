@@ -26,6 +26,7 @@
 	one = log -p -1 --pretty=full
 [core]
 	excludesfile = /Users/joshrogan/.gitignore_global
+	editor = vim
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =

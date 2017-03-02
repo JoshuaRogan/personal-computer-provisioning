@@ -10,6 +10,9 @@ install_homebrew() {
     brew doctor
 }
 
+install_lsp{
+    go get github.com/dborzov/lsp
+}
 install_lnav() {
     local filename=lnav-0.8.1-os-x.zip
     wget https://github.com/tstack/lnav/releases/download/v0.8.1/$filename
@@ -24,7 +27,7 @@ setup_iterm() {
 }
 
 setup_dev() {
-    brew install node yarn vim zsh zsh-completions
+    brew install node yarn vim zsh zsh-completions toilet fortune go
 
     #Oh my zsh
 

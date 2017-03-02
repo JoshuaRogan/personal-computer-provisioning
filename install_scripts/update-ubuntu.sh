@@ -14,6 +14,10 @@ apt(){
     sudo apt --yes autoremove -qq && shw_success "apt autoremove"
 }
 
+setup_dev(){
+    sudo apt --yes install golang
+
+}
 main() {
     shw_start "Updating Ubuntu"
     apt
