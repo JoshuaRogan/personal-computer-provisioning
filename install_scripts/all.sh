@@ -16,7 +16,11 @@ install_webdriver() {
 #    java -jar -Dwebdriver.gecko.driver=./geckodriver selenium-server-standalone-3.0.1.jar
 }
 
-main() {
+setup_dev() {
+    npm install --global --no-optional phantomas phantomjs-prebuilt@^2.1.5
+}
+
+}main() {
     install_prezto && shw_success "Prezto Installed"
 }
 main

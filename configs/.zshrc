@@ -5,10 +5,31 @@ USE_OHMYZSH=false
 PROVISION_DIR="${HOME}/projects/personal-computer-provisioning/"
 PROVISION_CONFIG_DIR="${PROVISION_DIR}/configs"
 
+########### Exports ###########
+export EDITOR=vim
+export PATH=${PATH}:/usr/local/opt/gettext/bin
+export PATH=${PATH}:~/go/bin
+export GOPATH=~/go
+export NVM_DIR="/Users/joshrogan/.nvm"
+export PATH="$HOME/.basher/bin:$PATH"
+
+########### Evals ###########
+eval $(thefuck --alias)
+eval "$(basher init -)"
+
+########### Sourcing ###########
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[[ -f /Users/joshrogan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/joshrogan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
 ################################# GREETING #################################
 function welcome(){
-    cowsay -p -f stegosaurus "Welcome $(whoami)"
-    fortune -io
+    local OSINFO="$(ansi -n --yellow $(uname -a))"
+    local NAME="$(ansi -n --blue $(whoami))"
+    ansi -n --green "$(cowsay -W 70 -f stegosaurus $(fortune -o))"
+    echo "\n"
+    ansi -n --yellow "$(uname -v)"
 }
 welcome
 ################################# GREETING #################################
@@ -113,28 +134,9 @@ if [ "$USE_OHMYZSH" = true ] ; then
 fi
 
 
-################################# Misc #################################
-########### Exports ###########
-export EDITOR=vim
-export PATH=${PATH}:/usr/local/opt/gettext/bin
-export PATH=${PATH}:~/go/bin
-export GOPATH=~/go
-export NVM_DIR="/Users/joshrogan/.nvm"
+################################# MISC #################################
 
-
-#fpath=(/usr/local/share/zsh-completions $fpath)
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-eval $(thefuck --alias)
-
-
-
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-
-# tabtab source for yarn package
-# uninstall by removing these lines or running `tabtab uninstall yarn`
-[[ -f /Users/joshrogan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/joshrogan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
-
+################################# MISC #################################
 
 ################################# ALIASES #################################
 alias cal='cal | grep --color -EC6 "\b$(date +%e | sed "s/ //g")"'

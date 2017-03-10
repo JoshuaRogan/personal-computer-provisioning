@@ -21,6 +21,9 @@ setup_dev(){
     sudo apt --yes install golang cowsay fortune fortunes-off
 }
 
+install_go(){
+    go get github.com/dborzov/lsp
+}
 main() {
     cmn_ask_to_continue "Do you want to install Ubuntu Programs"
     install_httpstat
