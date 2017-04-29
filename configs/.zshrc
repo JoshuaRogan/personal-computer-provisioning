@@ -71,6 +71,7 @@ alias ldot='ls -d .*'
 alias lsa='ls -lah'
 alias profile='vim ~/.zshrc'
 alias reload='source ~/.zshrc'
+alias chrome='google-chrome'
 
 ########### CURL STUFF ###########
 alias header='httpstat'
