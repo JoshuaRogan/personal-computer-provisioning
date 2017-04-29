@@ -8,12 +8,11 @@ PROVISION_CONFIG_DIR="${PROVISION_DIR}/configs"
 
 ########### Exports ###########
 export EDITOR=vim
-export GOPATH=~/go
+export GOPATH="$HOME/go"
 export NVM_DIR="$HOME/.nvm"
 export PATH="$HOME/.basher/bin:$PATH"
 export PATH=${PATH}:"$HOME/.config/composer/vendor/bin"
-export PATH=${PATH}:/usr/local/opt/gettext/bin
-export PATH=${PATH}:~/go/bin
+export PATH=${PATH}:"$HOME/go/bin"
 
 ########### Evals ###########
 eval $(thefuck --alias)

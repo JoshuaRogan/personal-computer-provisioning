@@ -19,11 +19,18 @@ install_lnav() {
 
 setup_dev(){
     sudo apt --yes install golang cowsay fortune fortunes-off
+    git clone https://github.com/basherpm/basher.git ~/.basher
 }
 
 install_go(){
     go get github.com/dborzov/lsp
 }
+
+install_basher(){
+  git clone https://github.com/basherpm/basher.git ~/.basher
+  basher install fidian/ansi
+}
+
 main() {
     cmn_ask_to_continue "Do you want to install Ubuntu Programs"
     install_httpstat
