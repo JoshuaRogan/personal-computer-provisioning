@@ -34,6 +34,7 @@ export NVM_DIR="$HOME/.nvm"
 addPath "$HOME/.basher/bin:$PATH"
 addPath "$HOME/.config/composer/vendor/bin"
 addPath "$HOME/go/bin"
+addPath "$HOME/.composer/vendor/bin"
 
 ########### Evals ###########
 eval "$(basher init -)"
