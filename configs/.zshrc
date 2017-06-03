@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 ########### Helpers ###########
-osis()
-{
+osis(){
     local n=0
     if [[ "$1" = "-n" ]]; then n=1;shift; fi
 
@@ -12,6 +11,13 @@ osis()
     return $(( $n ^ $? ))
 }
 
+include(){
+    [[ -f "$1" ]] && source "$1"
+}
+
+addPath(){
+  export PATH=${PATH}:"$1"
+}
 
 ########### Config ###########
 USE_PRESTO=true
@@ -23,19 +29,23 @@ PROVISION_CONFIG_DIR="${PROVISION_DIR}/configs"
 export EDITOR=vim
 export GOPATH="$HOME/go"
 export NVM_DIR="$HOME/.nvm"
-export PATH="$HOME/.basher/bin:$PATH"
-export PATH=${PATH}:"$HOME/.config/composer/vendor/bin"
-export PATH=${PATH}:"$HOME/go/bin"
+
+########### Paths ###########
+addPath "$HOME/.basher/bin:$PATH"
+addPath "$HOME/.config/composer/vendor/bin"
+addPath "$HOME/go/bin"
 
 ########### Evals ###########
-eval $(thefuck --alias)
 eval "$(basher init -)"
 
 ########### Sourcing ###########
-[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
-[ -f "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -f "$HOME/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh" ] && source "$HOME/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh"
-[ -f "${HOME}/.iterm2_shell_integration.zsh" ] && source "${HOME}/.iterm2_shell_integration.zsh"
+include "$HOME/.fzf.zsh"
+include "$NVM_DIR/nvm.sh"
+include "$HOME/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh"
+
+osis Darwin && {
+  include "${HOME}/.iterm2_shell_integration.zsh"
+}
 
 ################################# GREETING #################################
 function welcome(){
@@ -50,14 +60,8 @@ welcome
 
 ################################# Prezto #################################
 if [ "$USE_PRESTO" = true ] ; then
-
-    if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-      source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-    fi
-
-    # Add Z
-    source "${PROVISION_CONFIG_DIR}/z.sh"
-
+    include "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+    include "${PROVISION_CONFIG_DIR}/z.sh"
 fi
 
 ################################# Oh My ZSH #################################
@@ -66,7 +70,7 @@ if [ "$USE_OHMYZSH" = true ] ; then
 
     export ZSH=~/.oh-my-zsh
     ZSH_THEME="theunraveler"
-    source $ZSH/oh-my-zsh.sh
+    include $ZSH/oh-my-zsh.sh
 
     # Uncomment the following line to display red dots whilst waiting for completion.
     COMPLETION_WAITING_DOTS="true"
@@ -75,7 +79,7 @@ if [ "$USE_OHMYZSH" = true ] ; then
 fi
 
 ################################# Additional Options #################################
-# 10 second wait if you do something that will delete everything.  I wish I'd had this before...
+# 10 second wait if you do something that will delete everything.
 setopt RM_STAR_WAIT
 
 ################################# ALIASES #################################
@@ -105,11 +109,8 @@ alias wikia-push='rsync -av --delete --progress /Users/joshrogan/projects/wikia/
 alias wikia='ssh jrogan@dev-jrogan'
 
 osis Linux && {
-  alias wikia-vpn='sudo openvpn --config ~/projects/personal-computer-provisioning/configs/vpn/config1.ovpn'
-}
-
-osis Darwin && {
-
+  alias wikia-vpn='sudo openvpn --config ~/projects/personal-computer-provisioning/configs/vpn/config1.ovpn '
+  alias wikia-vpn-routes='sudo route add 10.8.68.166 dev tun0 || sudo route add 10.8.76.24 dev tun0 || sudo route add 10.8.40.111 dev tun0 || sudo route add 10.8.44.90 dev tun0'
 }
 
 ################################# ALIASES #################################
