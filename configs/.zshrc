@@ -1,5 +1,18 @@
 #!/usr/bin/env bash
 
+########### Helpers ###########
+osis()
+{
+    local n=0
+    if [[ "$1" = "-n" ]]; then n=1;shift; fi
+
+    # echo $OS|grep $1 -i >/dev/null
+    uname -s |grep -i "$1" >/dev/null
+
+    return $(( $n ^ $? ))
+}
+
+
 ########### Config ###########
 USE_PRESTO=true
 USE_OHMYZSH=false
@@ -72,6 +85,9 @@ alias lsa='ls -lah'
 alias profile='vim ~/.zshrc'
 alias reload='source ~/.zshrc'
 alias chrome='google-chrome'
+alias vpn-connect='expressvpn connect'
+alias vpn-disconnect='expressvpn disconnect'
+alias vpn='expressvpn status'
 
 ########### CURL STUFF ###########
 alias header='httpstat'
@@ -86,7 +102,14 @@ alias droplet='ssh josh@droplet.joshuarogan.com'
 ####### Wikia #######
 alias wikia-deploy='ssh jrogan@deploy-s1'
 alias wikia-push='rsync -av --delete --progress /Users/joshrogan/projects/wikia/ jrogan@dev-jrogan:/usr/wikia/source/app/'
-alias wikia-vpn='sudo openvpn --config ~/projects/personal-computer-provisioning/configs/vpn/config1.ovpn'
 alias wikia='ssh jrogan@dev-jrogan'
+
+osis Linux && {
+  alias wikia-vpn='sudo openvpn --config ~/projects/personal-computer-provisioning/configs/vpn/config1.ovpn'
+}
+
+osis Darwin && {
+
+}
 
 ################################# ALIASES #################################
