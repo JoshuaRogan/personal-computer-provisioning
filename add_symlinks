@@ -20,5 +20,6 @@ link_config ~/.config/htop/ htoprc
 link_config ~/ .zpreztorc
 link_config ~/ .gitignore_global
 link_config ~/ .vimrc
+link_config ~/ .tmux.conf
 
 shw_success "Symlinking Files"
