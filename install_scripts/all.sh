@@ -9,6 +9,18 @@ install_prezto() {
     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 }
 
+install_ansi() {
+  curl -OL git.io/ansi
+  chmod 755 ansi
+  sudo mv ansi /usr/local/bin/
+}
+
+install_cowsay() {
+  curl -OL git.io/ansi
+  chmod 755 ansi
+  sudo mv ansi /usr/local/bin/
+}
+
 install_webdriver() {
     mkdir webdriverio-test && cd webdriverio-test
     curl -O http://selenium-release.storage.googleapis.com/3.0/selenium-server-standalone-3.0.1.jar
@@ -20,7 +32,8 @@ setup_dev() {
     npm install --global --no-optional phantomas phantomjs-prebuilt@^2.1.5
 }
 
-}main() {
+main() {
     install_prezto && shw_success "Prezto Installed"
+    install_ansi && shw_success "Ansi Installed"
 }
 main

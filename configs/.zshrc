@@ -111,7 +111,7 @@ alias wikia-push='rsync -av --delete --progress /Users/joshrogan/projects/wikia/
 alias wikia='ssh jrogan@dev-jrogan'
 
 osis Linux && {
-  alias wikia-vpn='sudo openvpn --config ~/projects/personal-computer-provisioning/configs/vpn/config1.ovpn '
+  alias wikia-vpn='sudo openvpn --config ~/projects/vpn-stuff/openvpn '
   alias wikia-vpn-routes='sudo route add 10.8.68.166 dev tun0 || sudo route add 10.8.76.24 dev tun0 || sudo route add 10.8.40.111 dev tun0 || sudo route add 10.8.44.90 dev tun0'
   alias wikia-vpn-off='sudo cp ~/resolv.conf.deafult /etc/resolv.conf'
   alias wikia-vpn-on='sudo cp ~/resolv.conf.wikia /etc/resolv.conf'
