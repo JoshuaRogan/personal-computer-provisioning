@@ -10,4 +10,6 @@ source ~/.vim_runtime/my_configs.vim
 catch
 endtry
 
-colorscheme Atom
+
+:imap jk <Esc>
+
