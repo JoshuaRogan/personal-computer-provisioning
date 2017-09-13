@@ -38,6 +38,7 @@ addPath "$HOME/.composer/vendor/bin"
 
 ########### Evals ###########
 eval "$(basher init -)"
+eval "$(rbenv init -)"
 
 ########### Sourcing ###########
 include "$HOME/.fzf.zsh"
@@ -56,6 +57,7 @@ function welcome(){
     echo "\n"
     ansi -n --yellow "$(uname -v)"
 }
+# welcome
 ################################# GREETING #################################
 
 ################################# Prezto #################################
@@ -108,6 +110,7 @@ alias droplet='ssh josh@droplet.joshuarogan.com'
 alias wikia-deploy='ssh jrogan@deploy-s1'
 alias wikia-push='rsync -av --delete --progress /Users/joshrogan/projects/wikia/ jrogan@dev-jrogan:/usr/wikia/source/app/'
 alias wikia='ssh jrogan@dev-jrogan'
+alias wikia-dev-key="curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: application/json' -d 'username=jrogan92&password=570309118Five' 'https://services.wikia-dev.us/auth/token'"
 
 osis Linux && {
   alias wikia-vpn='sudo openvpn --config ~/projects/vpn-stuff/openvpn '
@@ -117,3 +120,6 @@ osis Linux && {
 }
 
 ################################# ALIASES #################################
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
