@@ -8,22 +8,23 @@
 	required = true
 	clean = git-lfs clean %f
 [alias]
-	st = status
-	ci = commit
-	br = branch
-	co = checkout
-	df = diff
-	lg = log -p
-	cp = cherry-pick
-	po = push origin
-	l = log --graph --decorate
-	rbc = rebase --continue
-	cam = commit -a -m
-	ca = commit -a
 	A = add -A
+	br = branch
+	ca = commit -a
+	cam = commit -a -m
+	ci = commit
+	co = checkout
+	cp = cherry-pick
+	df = diff
+    fo = fetch origin
 	hidef = update-index --assume-unchanged
-	showf = update-index --no-assume-unchanged
+	l = log --graph --decorate
+	lg = log -p
 	one = log -p -1 --pretty=full
+	po = push origin
+	rbc = rebase --continue
+	showf = update-index --no-assume-unchanged
+	st = status
 [core]
 	excludesfile = /Users/joshrogan/.gitignore_global
 	editor = vim
