@@ -57,7 +57,8 @@ function welcome(){
     echo "\n"
     ansi -n --yellow "$(uname -v)"
 }
-# welcome
+
+which -s cowsay && which -s fortune && welcome
 ################################# GREETING #################################
 
 ################################# Prezto #################################
@@ -119,6 +120,10 @@ osis Linux && {
   alias wikia-vpn-on='sudo cp ~/resolv.conf.wikia /etc/resolv.conf'
 }
 
+which -s hub && {
+    alias git=hub
+    alias issues="git browse -- issues"
+}
 ################################# ALIASES #################################
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
