@@ -10,6 +10,5 @@ source ~/.vim_runtime/my_configs.vim
 catch
 endtry
 
-
-:imap jk <Esc>
-
+:imap jk <esc>
+:nnoremap <space> @q
