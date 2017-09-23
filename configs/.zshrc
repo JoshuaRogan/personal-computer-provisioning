@@ -86,8 +86,15 @@ fi
 setopt RM_STAR_WAIT
 
 ################################# ALIASES #################################
-alias .tmux='vim ~/.tmux.conf.local' 
+
+########## DOT FILE EDITING ##########
+alias .tmux='vim ~/.tmux.conf.local'
 alias .vimrc='vim ~/.vimrc'
+alias .git='vim ~/.gitconfig'
+alias .gitconfig='vim ~/.gitconfig'
+alias .zshrc='vim ~/.zshrc'
+
+########### MISC ##########
 alias cal='cal | grep --color -EC6 "\b$(date +%e | sed "s/ //g")"'
 alias chrome='google-chrome'
 alias clean='sudo pkill -9 php && sudo pkill -9 node && sudo pkill -9 npm'

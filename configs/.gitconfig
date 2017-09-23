@@ -16,15 +16,17 @@
 	co = checkout
 	cp = cherry-pick
 	df = diff
-    fo = fetch origin
 	hidef = update-index --assume-unchanged
 	l = log --graph --decorate
 	lg = log -p
 	one = log -p -1 --pretty=full
-	po = push origin
+	pusho = push origin
 	rbc = rebase --continue
 	showf = update-index --no-assume-unchanged
-	st = status
+	st = status -s
+    fo = fetch origin
+    pullom = pull origin master
+    pushom = push origin master
 [core]
 	excludesfile = /Users/joshrogan/.gitignore_global
 	editor = vim
