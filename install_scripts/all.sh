@@ -28,6 +28,12 @@ install_webdriver() {
 #    java -jar -Dwebdriver.gecko.driver=./geckodriver selenium-server-standalone-3.0.1.jar
 }
 
+install_tmux() {
+    cd ~
+    git clone https://github.com/gpakosz/.tmux.git
+    ln -s -f .tmux/.tmux.conf
+}
+
 setup_dev() {
     npm install --global --no-optional phantomas phantomjs-prebuilt@^2.1.5
 }
@@ -35,5 +41,6 @@ setup_dev() {
 main() {
     install_prezto && shw_success "Prezto Installed"
     install_ansi && shw_success "Ansi Installed"
+    install_tmux && shw_success "Oh my tmux Installed"
 }
 main

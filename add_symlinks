@@ -22,5 +22,6 @@ link_config ~/ .gitignore_global
 link_config ~/ .vimrc
 link_config ~/ .tmux.conf
 link_config ~/ .ideavimrc
+link_config ~/ .tmux.conf.local
 
 shw_success "Symlinking Files"
