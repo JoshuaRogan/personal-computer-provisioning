@@ -87,12 +87,13 @@ setopt RM_STAR_WAIT
 
 ################################# ALIASES #################################
 alias cal='cal | grep --color -EC6 "\b$(date +%e | sed "s/ //g")"'
+alias chrome='google-chrome'
 alias clean='sudo pkill -9 php && sudo pkill -9 node && sudo pkill -9 npm'
 alias ldot='ls -d .*'
 alias lsa='ls -lah'
 alias profile='vim ~/.zshrc'
 alias reload='source ~/.zshrc'
-alias chrome='google-chrome'
+alias vimrc='vim ~/.vimrc'
 alias vpn-connect='expressvpn connect'
 alias vpn-disconnect='expressvpn disconnect'
 alias vpn='expressvpn status'
