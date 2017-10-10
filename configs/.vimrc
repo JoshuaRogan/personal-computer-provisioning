@@ -10,6 +10,8 @@ source ~/.vim_runtime/my_configs.vim
 catch
 endtry
 
+:colorscheme default
+
 :imap jk <esc>
 :nnoremap <space> @q
 noremap <Up> <NOP>
