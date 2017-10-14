@@ -110,6 +110,9 @@ alias vpn-connect='expressvpn connect'
 alias vpn-disconnect='expressvpn disconnect'
 alias vpn='expressvpn status'
 
+########## NODE ########## 
+alias nodei="node --inspect"
+
 ########### CURL STUFF ###########
 alias header='httpstat'
 alias http='time http'
