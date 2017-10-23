@@ -131,6 +131,11 @@ alias wikia-upload='rsync -av --delete --progress . jrogan@dev-jrogan:~/dev-asse
 alias wikia='ssh jrogan@dev-jrogan'
 alias wikia-dev-key="curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: application/json' -d 'username=jrogan92&password=570309118Five' 'https://services.wikia-dev.us/auth/token'"
 
+# Quick JW Player lookups
+jw() {
+    http "http://cdn.jwplayer.com/v2/media/${1}"
+}
+
 osis Linux && {
   alias wikia-vpn='sudo openvpn --config ~/projects/vpn-stuff/openvpn '
   alias wikia-vpn-routes='sudo route add 10.8.68.166 dev tun0 || sudo route add 10.8.76.24 dev tun0 || sudo route add 10.8.40.111 dev tun0 || sudo route add 10.8.44.90 dev tun0'
