@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Must Install List
+# diff2Html
+# tejira
+#
+
 ########### Helpers ###########
 osis(){
     local n=0
