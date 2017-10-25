@@ -143,7 +143,7 @@ jw() {
 
 # Open a jira issue
 issue() {
-    jira issue ${(U)1}
+    jira issue "FAN-${1}"
 }
 
 osis Linux && {
