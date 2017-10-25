@@ -136,6 +136,11 @@ jw() {
     http "http://cdn.jwplayer.com/v2/media/${1}"
 }
 
+# Open a jira issue
+issue() {
+    jira issue ${(U)1}
+}
+
 osis Linux && {
   alias wikia-vpn='sudo openvpn --config ~/projects/vpn-stuff/openvpn '
   alias wikia-vpn-routes='sudo route add 10.8.68.166 dev tun0 || sudo route add 10.8.76.24 dev tun0 || sudo route add 10.8.40.111 dev tun0 || sudo route add 10.8.44.90 dev tun0'
