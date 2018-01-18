@@ -29,6 +29,7 @@ USE_PRESTO=true
 USE_OHMYZSH=false
 PROVISION_DIR="${HOME}/projects/personal-computer-provisioning/"
 PROVISION_CONFIG_DIR="${PROVISION_DIR}/configs"
+NOTES_DIRECTORY="${HOME}/Google\ Drive/notes"
 
 ########### Exports ###########
 export EDITOR=vim
