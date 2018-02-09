@@ -42,6 +42,7 @@ addPath "$HOME/.config/composer/vendor/bin"
 addPath "$HOME/go/bin"
 addPath "$HOME/.composer/vendor/bin"
 addPath "$HOME/.local/bin"
+addPath "$HOME/.config/yarn/global/bin"
 
 ########### Evals ###########
 eval "$(basher init -)"
@@ -50,7 +51,6 @@ eval "$(rbenv init -)"
 ########### Sourcing ###########
 include "$HOME/.fzf.zsh"
 include "$NVM_DIR/nvm.sh"
-include "$HOME/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh"
 
 osis Darwin && {
   include "${HOME}/.iterm2_shell_integration.zsh"
@@ -116,8 +116,10 @@ alias upstream='tmux attach-session -t upstream'
 alias vpn-connect='expressvpn connect'
 alias vpn-disconnect='expressvpn disconnect'
 alias vpn='expressvpn status'
+alias twitter='rainbowstream'
 
-########## NODE ########## 
+
+########## NODE ##########
 alias nodei="node --inspect"
 
 ########### CURL STUFF ###########
@@ -163,3 +165,30 @@ which -s hub && {
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+
+# tabtab source for yarn package
+# uninstall by removing these lines or running `tabtab uninstall yarn`
+[[ -f /Users/joshrogan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/joshrogan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
+
+# Auto switch based on .nvmrc - check out dir env for more generic solution
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
