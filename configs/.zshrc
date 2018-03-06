@@ -110,14 +110,14 @@ alias ldot='ls -d .*'
 alias lsa='ls -lah'
 alias profile='vim ~/.zshrc'
 alias reload='source ~/.zshrc'
-alias weather='http wttr.in/94107'
-alias wget='http -d'
+alias twitter='rainbowstream'
 alias upstream='tmux attach-session -t upstream'
 alias vpn-connect='expressvpn connect'
 alias vpn-disconnect='expressvpn disconnect'
 alias vpn='expressvpn status'
-alias twitter='rainbowstream'
-
+alias weather='http wttr.in/94107'
+alias wget='http -d'
+alias wip='git add -A && git cam "WIP"'
 
 ########## NODE ##########
 alias nodei="node --inspect"
