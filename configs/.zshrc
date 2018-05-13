@@ -166,7 +166,6 @@ which -s hub && {
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-
 # tabtab source for yarn package
 # uninstall by removing these lines or running `tabtab uninstall yarn`
 [[ -f /Users/joshrogan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/joshrogan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
