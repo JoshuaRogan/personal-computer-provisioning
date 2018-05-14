@@ -118,6 +118,7 @@ alias vpn='expressvpn status'
 alias weather='http wttr.in/94107'
 alias wget='http -d'
 alias wip='git add -A && git cam "WIP"'
+alias wipu='git reset HEAD~'
 
 ########## NODE ##########
 alias nodei="node --inspect"
@@ -133,6 +134,7 @@ alias droplet-root='ssh root@droplet.joshuarogan.com'
 alias droplet='ssh josh@droplet.joshuarogan.com'
 
 ####### Wikia #######
+alias board='jira issue ls'
 alias wikia-deploy='ssh jrogan@deploy-s1'
 alias wikia-push='rsync -av --delete --progress /Users/joshrogan/projects/wikia/ jrogan@dev-jrogan:/usr/wikia/source/app/'
 alias wikia-assets='rsync -av --delete --progress /Users/joshrogan/projects/dev-assets/ jrogan@dev-jrogan:~/dev-assets'
@@ -147,7 +149,11 @@ jw() {
 
 # Open a jira issue
 issue() {
-    jira issue "FAN-${1}"
+    jira issue "CAKE-${1}"
+}
+
+wikiacgs() {
+    eval LOCAL_COMMUNITY_CREATION_ONLY=true DATABASE_MASTER_URL='jdbc:mysql://localhost:3307/${1:-content_graph}' DATABASE_SLAVE_URL='jdbc:mysql://localhost:3307/${1:-content_graph}' DATABASE_USER='root' DATABASE_PASSWORD='' SQL_LOG_SAMPLE_RATE='0' LOG_PLAIN_STDOUT_ONLY=true ./gradlew :service:content-graph:content-graph-service:run
 }
 
 osis Linux && {
@@ -168,7 +174,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # tabtab source for yarn package
 # uninstall by removing these lines or running `tabtab uninstall yarn`
-[[ -f /Users/joshrogan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/joshrogan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
+# [[ -f /Users/joshrogan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/joshrogan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
 
 # Auto switch based on .nvmrc - check out dir env for more generic solution
 autoload -U add-zsh-hook
