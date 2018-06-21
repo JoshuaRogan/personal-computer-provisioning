@@ -47,6 +47,7 @@ addPath "$HOME/.config/yarn/global/bin"
 ########### Evals ###########
 eval "$(basher init -)"
 eval "$(rbenv init -)"
+eval "$(pipenv --completion)"
 
 ########### Sourcing ###########
 include "$HOME/.fzf.zsh"
