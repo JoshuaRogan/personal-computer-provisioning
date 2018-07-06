@@ -35,14 +35,18 @@ NOTES_DIRECTORY="${HOME}/Google\ Drive/notes"
 export EDITOR=vim
 export GOPATH="$HOME/go"
 export NVM_DIR="$HOME/.nvm"
+export KEYTIMEOUT=1
 
-########### Paths ###########
+########## Paths ###########
 addPath "$HOME/.basher/bin:$PATH"
 addPath "$HOME/.config/composer/vendor/bin"
 addPath "$HOME/go/bin"
 addPath "$HOME/.composer/vendor/bin"
 addPath "$HOME/.local/bin"
 addPath "$HOME/.config/yarn/global/bin"
+addPath "$HOME/.config/yarn/global/bin/bin"
+addPath "$HOME/config/yarn/global/bin/bin"
+addPath "$HOME/Library/Python/3.6/bin"
 
 ########### Evals ###########
 eval "$(basher init -)"
