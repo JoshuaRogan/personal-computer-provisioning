@@ -3,7 +3,7 @@
 # Must Install List
 # diff2Html
 # tejira
-#
+# tig
 
 ########### Helpers ###########
 osis(){
@@ -202,3 +202,4 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+
