@@ -147,6 +147,7 @@ alias wikia-assets='rsync -av --delete --progress /Users/joshrogan/projects/dev-
 alias wikia-upload='rsync -av --delete --progress . jrogan@dev-jrogan:~/dev-assets/dirs/'
 alias wikia='ssh jrogan@dev-jrogan'
 alias wikia-dev-key="curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: application/json' -d 'username=jrogan92&password=570309118Five' 'https://services.wikia-dev.us/auth/token'"
+alias kubectl='docker run -i --rm artifactory.wikia-inc.com/ops/k8s-kubectl'
 
 # Quick JW Player lookups
 jw() {
