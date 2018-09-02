@@ -47,6 +47,7 @@ addPath "$HOME/.config/yarn/global/bin"
 addPath "$HOME/.config/yarn/global/bin/bin"
 addPath "$HOME/config/yarn/global/bin/bin"
 addPath "$HOME/Library/Python/3.6/bin"
+addPath "$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
 
 ########### Evals ###########
 eval "$(basher init -)"
@@ -203,3 +204,5 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
