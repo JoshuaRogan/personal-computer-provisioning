@@ -29,7 +29,9 @@
     pushom = push origin master
 [core]
 	excludesfile = /Users/joshrogan/.gitignore_global
-	editor = vim
+    editor = vim
+[diff]
+    external = /Users/joshrogan/icdiff
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =

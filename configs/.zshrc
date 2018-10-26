@@ -109,12 +109,15 @@ alias .zshrc='vim ~/.zshrc'
 
 ########### MISC ##########
 alias cal='cal | grep --color -EC6 "\b$(date +%e | sed "s/ //g")"'
+alias cat='bat'
 alias chrome='google-chrome'
 alias clean='sudo pkill -9 php && sudo pkill -9 node && sudo pkill -9 npm'
 alias f2='tmux attach-session -t f2'
 alias ldot='ls -d .*'
 alias lsa='ls -lah'
+alias ping='prettyping'
 alias profile='vim ~/.zshrc'
+alias preview="fzf --preview 'bat --color \"always\" {}'"
 alias reload='source ~/.zshrc'
 alias twitter='rainbowstream'
 alias upstream='tmux attach-session -t upstream'
@@ -147,7 +150,6 @@ alias wikia-assets='rsync -av --delete --progress /Users/joshrogan/projects/dev-
 alias wikia-upload='rsync -av --delete --progress . jrogan@dev-jrogan:~/dev-assets/dirs/'
 alias wikia='ssh jrogan@dev-jrogan'
 alias wikia-dev-key="curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: application/json' -d 'username=jrogan92&password=570309118Five' 'https://services.wikia-dev.us/auth/token'"
-alias kubectl='docker run -i --rm artifactory.wikia-inc.com/ops/k8s-kubectl'
 
 # Quick JW Player lookups
 jw() {
@@ -161,6 +163,20 @@ issue() {
 
 wikiacgs() {
     eval LOCAL_COMMUNITY_CREATION_ONLY=true DATABASE_MASTER_URL='jdbc:mysql://localhost:3307/${1:-content_graph}' DATABASE_SLAVE_URL='jdbc:mysql://localhost:3307/${1:-content_graph}' DATABASE_USER='root' DATABASE_PASSWORD='' SQL_LOG_SAMPLE_RATE='0' LOG_PLAIN_STDOUT_ONLY=true ./gradlew :service:content-graph:content-graph-service:run
+}
+
+wikiaseedcgs() {
+    content_graph="content_graph_$(date +%Y%m%d)"
+    db_name=${1:-${content_graph}}
+    mysql -uroot -P3307 -h127.0.0.1 -v -e "drop database ${db_name}"
+    mysql -uroot -P3307 -h127.0.0.1 -v -e "create database ${db_name}" && \
+    mysql -uroot -P3307 -h127.0.0.1 ${db_name} < $HOME/projects/pandora/service/content-graph/content-graph-lib/src/main/resources/db/content-graph-db-schema.sql && \
+    mysql -uroot -P3307 -h127.0.0.1 ${db_name} < $HOME/projects/pandora/service/content-graph/content-graph-lib/src/main/resources/db/content-graph-db-data.sql && \
+    mysql -uroot -P3307 -h127.0.0.1 ${db_name} < $HOME/projects/pandora/service/content-graph/content-graph-lib/src/main/resources/db/dev-seed-data.sql
+}
+
+wikiacgsprod() {
+    eval LOCAL_COMMUNITY_CREATION_ONLY=true DATABASE_MASTER_URL='jdbc:mysql://geo-db-contentgraph-master.query.consul:3306/contentgraph' DATABASE_SLAVE_URL='jdbc:mysql://geo-db-contentgraph-master.query.consul:3306/contentgraph' DATABASE_USER='contentgraph' DATABASE_PASSWORD='mAwcnJQ6aBykJp1A' SQL_LOG_SAMPLE_RATE='0' LOG_PLAIN_STDOUT_ONLY=true ./gradlew :service:content-graph:content-graph-service:run
 }
 
 osis Linux && {
