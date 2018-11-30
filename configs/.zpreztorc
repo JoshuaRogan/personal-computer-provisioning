@@ -41,13 +41,14 @@ zstyle ':prezto:load' pmodule \
   'osx' \
   'node' \
   'archive' \
+  'autosuggestions' \
 
 #
 # Autosuggestions
 #
 
 # Set the query found color.
-# zstyle ':prezto:module:autosuggestions:color' found ''
+zstyle ':prezto:module:autosuggestions:color' found ''
 
 #
 # Editor

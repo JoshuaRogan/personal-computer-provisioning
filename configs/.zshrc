@@ -46,7 +46,7 @@ addPath "$HOME/.local/bin"
 addPath "$HOME/.config/yarn/global/bin"
 addPath "$HOME/.config/yarn/global/bin/bin"
 addPath "$HOME/config/yarn/global/bin/bin"
-addPath "$HOME/Library/Python/3.6/bin"
+#addPath "$HOME/Library/Python/3.6/bin"
 addPath "$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
 
 ########### Evals ###########
@@ -162,7 +162,7 @@ issue() {
 }
 
 wikiacgs() {
-    eval LOCAL_COMMUNITY_CREATION_ONLY=true DATABASE_MASTER_URL='jdbc:mysql://localhost:3307/${1:-content_graph}' DATABASE_SLAVE_URL='jdbc:mysql://localhost:3307/${1:-content_graph}' DATABASE_USER='root' DATABASE_PASSWORD='' SQL_LOG_SAMPLE_RATE='0' LOG_PLAIN_STDOUT_ONLY=true ./gradlew :service:content-graph:content-graph-service:run
+    eval MEDIA_WIKI_HOST=community.wikia.com LOCAL_COMMUNITY_CREATION_ONLY=true DATABASE_MASTER_URL='jdbc:mysql://localhost:3307/${1:-content_graph}' DATABASE_SLAVE_URL='jdbc:mysql://localhost:3307/${1:-content_graph}' DATABASE_USER='root' DATABASE_PASSWORD='' SQL_LOG_SAMPLE_RATE='0' LOG_PLAIN_STDOUT_ONLY=true ./gradlew :service:content-graph:content-graph-service:run
 }
 
 wikiaseedcgs() {
