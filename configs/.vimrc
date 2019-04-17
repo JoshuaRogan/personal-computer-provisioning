@@ -26,5 +26,7 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
+set nofoldenable
 
-
+au WinEnter * set nofen
+au WinLeave * set nofen

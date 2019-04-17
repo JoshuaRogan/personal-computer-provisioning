@@ -13,6 +13,7 @@
 	ca = commit -a
 	cam = commit -a -m
 	ci = commit
+	c = commit
 	co = checkout
 	cp = cherry-pick
 	df = diff
