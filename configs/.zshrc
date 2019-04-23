@@ -128,6 +128,7 @@ alias weather='http wttr.in/94107'
 alias wget='http -d'
 alias wip='git add -A && git cam "WIP"'
 alias wipu='git reset HEAD~'
+alias yarnc='echo ">>> Deleting node_modules" && rm -rf node_modules && yarn'
 
 ########## NODE ##########
 alias nodei="node --inspect"
