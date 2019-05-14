@@ -55,7 +55,7 @@ eval "$(rbenv init -)"
 eval "$(pipenv --completion)"
 
 ########### Sourcing ###########
-include "$HOME/.fzf.zsh"
+#include "$HOME/.fzf.zsh"
 include "$NVM_DIR/nvm.sh"
 
 osis Darwin && {
@@ -152,9 +152,18 @@ alias wikia-upload='rsync -av --delete --progress . jrogan@dev-jrogan:~/dev-asse
 alias wikia='ssh jrogan@dev-jrogan'
 alias wikia-dev-key="curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: application/json' -d 'username=jrogan92&password=570309118Five' 'https://services.wikia-dev.us/auth/token'"
 
-# Quick JW Player lookups
-jw() {
-    http "http://cdn.jwplayer.com/v2/media/${1}"
+# first param should be version number with dots removed
+consumptionUpdate() {
+    cd "$HOME/projects/app/extensions/wikia/TriviaQuizzes"
+    git stash
+    git checkout dev
+    git pull origin dev
+    git checkout -b "content-types-upgrade-${1}"
+    yarn
+    yarn upgrade @wikia/content-types-consumption --latest
+    git add -A
+    git commit -m "Update consumption library"
+    git push origin "content-types-upgrade-${1}"
 }
 
 # Open a jira issue
@@ -222,5 +231,4 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
