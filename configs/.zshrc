@@ -38,7 +38,7 @@ export NVM_DIR="$HOME/.nvm"
 export KEYTIMEOUT=1
 
 ########## Paths ###########
-addPath "$HOME/.basher/bin:$PATH"
+#addPath "$HOME/.basher/bin:$PATH"
 addPath "$HOME/.config/composer/vendor/bin"
 addPath "$HOME/go/bin"
 addPath "$HOME/.composer/vendor/bin"
@@ -50,9 +50,9 @@ addPath "$HOME/config/yarn/global/bin/bin"
 addPath "$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
 
 ########### Evals ###########
-eval "$(basher init -)"
+#eval "$(basher init -)"
 eval "$(rbenv init -)"
-eval "$(pipenv --completion)"
+#eval "$(pipenv --completion)"
 
 ########### Sourcing ###########
 #include "$HOME/.fzf.zsh"
@@ -66,12 +66,13 @@ osis Darwin && {
 function welcome(){
     local OSINFO="$(ansi -n --yellow $(uname -a))"
     local NAME="$(ansi -n --blue $(whoami))"
-    ansi -n --green "$(cowsay -W 70 -f stegosaurus $(fortune -o))"
+    ansi -n --blue "$(cowsay -W 70 -f "${PROVISION_DIR}cows/dalek.cow" $(fortune))"
     echo "\n"
-    ansi -n --yellow "$(uname -v)"
+#    ansi -n --yellow "$(uname -v)"
 }
 
-which -s cowsay && which -s fortune && welcome
+#which -s cowsay && which -s fortune && welcome
+welcome
 ################################# GREETING #################################
 
 ################################# Prezto #################################
@@ -196,10 +197,10 @@ osis Linux && {
   alias wikia-vpn-on='sudo cp ~/resolv.conf.wikia /etc/resolv.conf'
 }
 
-which -s hub && {
-    alias git=hub
-    alias issues="git browse -- issues"
-}
+#which -s hub && {
+#    alias git=hub
+#    alias issues="git browse -- issues"
+#}
 ################################# ALIASES #################################
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
