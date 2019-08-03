@@ -151,6 +151,7 @@ alias wikia-push='rsync -av --delete --progress /Users/joshrogan/projects/wikia/
 alias wikia-assets='rsync -av --delete --progress /Users/joshrogan/projects/dev-assets/ jrogan@dev-jrogan:~/dev-assets'
 alias wikia-upload='rsync -av --delete --progress . jrogan@dev-jrogan:~/dev-assets/dirs/'
 alias wikia='ssh jrogan@dev-jrogan'
+alias wikia2='ssh jrogan@dev-jrogan-18'
 alias wikia-dev-key="curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: application/json' -d 'username=jrogan92&password=570309118Five' 'https://services.wikia-dev.us/auth/token'"
 
 # Open a jira issue
