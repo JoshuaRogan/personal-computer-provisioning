@@ -154,6 +154,13 @@ alias wikia-assets='rsync -av --delete --progress /Users/joshrogan/projects/dev-
 alias wikia-upload='rsync -av --delete --progress . jrogan@dev-jrogan:~/dev-assets/dirs/'
 alias wikia='ssh jrogan@dev-jrogan-18'
 alias wikia-dev-key="curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: application/json' -d 'username=jrogan92&password=570309118Five' 'https://services.wikia-dev.us/auth/token'"
+alias wikia-ucp-pull="rsync -avzhe ssh jrogan@dev-jrogan-18:~/unified-platform/ ~/projects/unified-platform/  --exclude '.idea'"
+alias wikia-ucp-push="rsync -avzhe ssh ~/projects/unified-platform/extensions/ jrogan@dev-jrogan-18:~/unified-platform/extensions/"
+
+wikia-ucp-dev() {
+    fswatch -0 ~/projects/unified-platform/ | xargs -0 -I {} rsync -avzhe ssh ~/projects/unified-platform/extensions/ jrogan@dev-jrogan-18:~/unified-platform/extensions/
+}
+
 
 # Get fastly debug headers
 wikia-header() {

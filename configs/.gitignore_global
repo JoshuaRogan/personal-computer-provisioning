@@ -23,3 +23,4 @@ node_modules
 .sass-cache
 *rogan-hide*
 *roganhide*
+.idea/
