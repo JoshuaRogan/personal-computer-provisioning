@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+# Archive from Aug 2020
 
-zmodload zsh/zprof
+#!/usr/bin/env bash
 
 # Must Install List
 # diff2Html
@@ -28,6 +28,7 @@ addPath(){
 
 ########### Config ###########
 USE_PRESTO=true
+USE_OHMYZSH=false
 PROVISION_DIR="${HOME}/projects/personal-computer-provisioning/"
 FORTUNES_DATA="${HOME}/projects/personal-computer-provisioning/fortunes"
 PROVISION_CONFIG_DIR="${PROVISION_DIR}/configs"
@@ -55,12 +56,12 @@ addPath "$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
 
 ########### Evals ###########
 #eval "$(basher init -)"
-#eval "$(rbenv init -)"
+eval "$(rbenv init -)"
 #eval "$(pipenv --completion)"
 
 ########### Sourcing ###########
 #include "$HOME/.fzf.zsh"
-#include "$NVM_DIR/nvm.sh"
+include "$NVM_DIR/nvm.sh"
 
 osis Darwin && {
   include "${HOME}/.iterm2_shell_integration.zsh"
@@ -80,9 +81,24 @@ welcome
 ################################# GREETING #################################
 
 ################################# Prezto #################################
-include "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-include "${PROVISION_CONFIG_DIR}/z.sh"
+if [ "$USE_PRESTO" = true ] ; then
+    include "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+    include "${PROVISION_CONFIG_DIR}/z.sh"
+fi
 
+################################# Oh My ZSH #################################
+if [ "$USE_OHMYZSH" = true ] ; then
+    # See https://github.com/robbyrussell/oh-my-zsh/blob/master/templates/zshrc.zsh-template
+
+    export ZSH=~/.oh-my-zsh
+    ZSH_THEME="theunraveler"
+    include $ZSH/oh-my-zsh.sh
+
+    # Uncomment the following line to display red dots whilst waiting for completion.
+    COMPLETION_WAITING_DOTS="true"
+    plugins=(nvm git bundler osx command-not-found Composer common-aliases npm pip vagrant sudo gulp z sublime yeoman extract h httpie laravel5)
+
+fi
 
 ################################# Additional Options #################################
 # 10 second wait if you do something that will delete everything.
@@ -160,6 +176,24 @@ issue() {
     jira issue "CAKE-${1}"
 }
 
+wikiacgs() {
+    eval MEDIA_WIKI_HOST=community.wikia.com LOCAL_COMMUNITY_CREATION_ONLY=true DATABASE_MASTER_URL='jdbc:mysql://localhost:3307/${1:-content_graph}' DATABASE_SLAVE_URL='jdbc:mysql://localhost:3307/${1:-content_graph}' DATABASE_USER='root' DATABASE_PASSWORD='' SQL_LOG_SAMPLE_RATE='0' LOG_PLAIN_STDOUT_ONLY=true ./gradlew :service:content-graph:content-graph-service:run
+}
+
+wikiaseedcgs() {
+    content_graph="content_graph_$(date +%Y%m%d)"
+    db_name=${1:-${content_graph}}
+    mysql -uroot -P3307 -h127.0.0.1 -v -e "drop database ${db_name}"
+    mysql -uroot -P3307 -h127.0.0.1 -v -e "create database ${db_name}" && \
+    mysql -uroot -P3307 -h127.0.0.1 ${db_name} < $HOME/projects/pandora/service/content-graph/content-graph-lib/src/main/resources/db/content-graph-db-schema.sql && \
+    mysql -uroot -P3307 -h127.0.0.1 ${db_name} < $HOME/projects/pandora/service/content-graph/content-graph-lib/src/main/resources/db/content-graph-db-data.sql && \
+    mysql -uroot -P3307 -h127.0.0.1 ${db_name} < $HOME/projects/pandora/service/content-graph/content-graph-lib/src/main/resources/db/dev-seed-data.sql
+}
+
+wikiacgsprod() {
+    eval LOCAL_COMMUNITY_CREATION_ONLY=true DATABASE_MASTER_URL='jdbc:mysql://geo-db-contentgraph-master.query.consul:3306/contentgraph' DATABASE_SLAVE_URL='jdbc:mysql://geo-db-contentgraph-master.query.consul:3306/contentgraph' DATABASE_USER='contentgraph' DATABASE_PASSWORD='mAwcnJQ6aBykJp1A' SQL_LOG_SAMPLE_RATE='0' LOG_PLAIN_STDOUT_ONLY=true ./gradlew :service:content-graph:content-graph-service:run
+}
+
 timezsh() {
   shell=${1-$SHELL}
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
@@ -178,7 +212,33 @@ osis Linux && {
 #}
 ################################# ALIASES #################################
 
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
 # tabtab source for yarn package
 # uninstall by removing these lines or running `tabtab uninstall yarn`
 # [[ -f /Users/joshrogan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/joshrogan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
 
+# Auto switch based on .nvmrc - check out dir env for more generic solution
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
