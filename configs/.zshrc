@@ -184,3 +184,6 @@ osis Linux && {
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source ~/.p10k.zsh
+source ~/projects/nerd-fonts/bin/scripts/lib/i_oct.sh
+
+echo $i_oct_heart
