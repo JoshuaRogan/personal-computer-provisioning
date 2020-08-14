@@ -14,15 +14,15 @@ link_config() {
     clr_reset " "
 }
 
-#link_config ~/ .gitconfig
-#link_config ~/ .zshrc
-#link_config ~/.config/htop/ htoprc
-#link_config ~/ .zpreztorc
-#link_config ~/ .gitignore_global
-#link_config ~/ .vimrc
-#link_config ~/ .tmux.conf
-#link_config ~/ .ideavimrc
-#link_config ~/ .tmux.conf.local
+link_config ~/ .gitconfig
+link_config ~/ .zshrc
+link_config ~/.config/htop/ htoprc
+link_config ~/ .zpreztorc
+link_config ~/ .gitignore_global
+link_config ~/ .vimrc
+link_config ~/ .tmux.conf
+link_config ~/ .ideavimrc
+link_config ~/ .tmux.conf.local
 link_config ~/ .p10k.zsh
 
 shw_success "Symlinking Files"
