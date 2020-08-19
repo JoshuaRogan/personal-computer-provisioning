@@ -28,7 +28,8 @@ addPath(){
 
 ########### Config ###########
 USE_PRESTO=true
-PROVISION_DIR="${HOME}/projects/personal-computer-provisioning/"
+PROJECTS_DIR="${HOME}/projects/"
+PROVISION_DIR="${PROJECTS_DIR}personal-computer-provisioning/"
 FORTUNES_DATA="${HOME}/projects/personal-computer-provisioning/fortunes"
 PROVISION_CONFIG_DIR="${PROVISION_DIR}/configs"
 NOTES_DIRECTORY="${HOME}/Google\ Drive/notes"
@@ -41,7 +42,6 @@ export KEYTIMEOUT=1
 export HISTSIZE=100000
 
 ########## Paths ###########
-#addPath "$HOME/.basher/bin:$PATH"
 addPath "$HOME/.config/composer/vendor/bin"
 addPath "$HOME/go/bin"
 addPath "$HOME/.composer/vendor/bin"
@@ -50,7 +50,6 @@ addPath "$HOME/bin"
 addPath "$HOME/.config/yarn/global/bin"
 addPath "$HOME/.config/yarn/global/bin/bin"
 addPath "$HOME/config/yarn/global/bin/bin"
-#addPath "$HOME/Library/Python/3.6/bin"
 addPath "$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
 
 ########### Evals ###########
@@ -75,14 +74,12 @@ function welcome(){
 #    ansi -n --yellow "$(uname -v)"
 }
 
-#which -s cowsay && which -s fortune && welcome
-welcome
+which -s cowsay 1> /dev/null && which -s fortune 1> /dev/null && welcome
 ################################# GREETING #################################
 
 ################################# Prezto #################################
 include "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 include "${PROVISION_CONFIG_DIR}/z.sh"
-
 
 ################################# Additional Options #################################
 # 10 second wait if you do something that will delete everything.
@@ -91,18 +88,18 @@ setopt RM_STAR_WAIT
 ################################# ALIASES #################################
 
 ########## DOT FILE EDITING ##########
-alias .tmux='vim ~/.tmux.conf.local'
-alias .vimrc='vim ~/.vimrc'
 alias .git='vim ~/.gitconfig'
 alias .gitconfig='vim ~/.gitconfig'
+alias .p10k='vim ~/.p10k.zsh'
+alias .tmux='vim ~/.tmux.conf.local'
+alias .vimrc='vim ~/.vimrc'
 alias .zshrc='vim ~/.zshrc'
 
 ########### MISC ##########
 alias cal='cal | grep --color -EC6 "\b$(date +%e | sed "s/ //g")"'
 alias cat='bat'
 alias chrome='google-chrome'
-alias clean='sudo pkill -9 php && sudo pkill -9 node && sudo pkill -9 npm'
-alias f2='tmux attach-session -t f2'
+alias clean='sudo pkill -9 php && sudo pkill -9 node && sudo pkill -9 npm && killnode'
 alias ldot='ls -d .*'
 alias killnode='echo "=> Killing nodejs and webpack" && pkill -9 node && pkill -9 webpack-serve && pkill -9 webpack && pkill -9 nohup && pkill -9 wdio && pkill -9 BrowserStackLocal'
 alias lsa='ls -lah'
@@ -111,20 +108,28 @@ alias profile='vim ~/.zshrc'
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 alias reload='source ~/.zshrc'
 alias twitter='rainbowstream'
-alias upstream='tmux attach-session -t upstream'
-alias vpn-connect='expressvpn connect'
-alias vpn-disconnect='expressvpn disconnect'
-alias vpn='expressvpn status'
 alias weather='http wttr.in/94107'
 alias wget='http -d'
 alias wip='git add -A && git cam "WIP"'
 alias wipu='git reset HEAD~'
 alias yarnc='echo "=> Deleting node_modules" && rm -rf node_modules && yarn'
 
+########## APPLICATION OPEN ##########
+alias intellij='open -a "IntelliJ IDEA 3"'
+alias vscode='open -a "Visual Studio Code"'
+
+########## INTELLI OPENS ##########
+alias f2="intellij ${PROJECTS_DIR}f2"
+alias personal="intellij ${PROVISION_DIR}"
+alias react-common="intellij ${PROVISION_DIR}react-common"
+alias ucp="unified-platform"
+alias unified-platform="intellij ${PROJECTS_DIR}unified-platform"
+alias upstream="intellij ${PROJECTS_DIR}upstream"
+
 ########## NODE ##########
 alias nodei="node --inspect"
 
-########### CURL STUFF ###########
+########### NETWORK STUFF ###########
 alias header='httpstat'
 alias http='time http'
 alias search='ag'
@@ -134,24 +139,14 @@ alias droplet-josh='ssh josh@droplet.joshuarogan.com'
 alias droplet-root='ssh root@droplet.joshuarogan.com'
 alias droplet='ssh josh@droplet.joshuarogan.com'
 
-####### Wikia #######
+####### FANDOM #######
 alias board='jira issue ls'
-alias wikia-deploy='ssh jrogan@deploy-s1'
-alias wikia-push='rsync -av --delete --progress /Users/joshrogan/projects/wikia/ jrogan@dev-jrogan:/usr/wikia/source/app/'
-alias wikia-assets='rsync -av --delete --progress /Users/joshrogan/projects/dev-assets/ jrogan@dev-jrogan:~/dev-assets'
-alias wikia-upload='rsync -av --delete --progress . jrogan@dev-jrogan:~/dev-assets/dirs/'
 alias wikia='ssh jrogan@dev-jrogan-18'
-alias wikia-dev-key="curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: application/json' -d 'username=jrogan92&password=570309118Five' 'https://services.wikia-dev.us/auth/token'"
-alias wikia-ucp-pull="rsync -avzhe ssh jrogan@dev-jrogan-18:~/unified-platform/ ~/projects/unified-platform/  --exclude '.idea'"
-alias wikia-ucp-push="rsync -avzhe ssh ~/projects/unified-platform/extensions/ jrogan@dev-jrogan-18:~/unified-platform/extensions/"
-
-wikia-ucp-dev() {
-    fswatch -0 ~/projects/unified-platform/ | xargs -0 -I {} rsync -avzhe ssh ~/projects/unified-platform/extensions/ jrogan@dev-jrogan-18:~/unified-platform/extensions/
-}
+alias fandom='ssh jrogan@dev-jrogan-18'
 
 
 # Get fastly debug headers
-wikia-header() {
+fandom-header() {
     httpstat "${1}" -H 'Fastly-Debug: 1'
 }
 
@@ -160,23 +155,11 @@ issue() {
     jira issue "CAKE-${1}"
 }
 
+# Testing bootup time
 timezsh() {
   shell=${1-$SHELL}
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
 }
-
-osis Linux && {
-  alias wikia-vpn='sudo openvpn --config ~/projects/vpn-stuff/openvpn '
-  alias wikia-vpn-routes='sudo route add 10.8.68.166 dev tun0 || sudo route add 10.8.76.24 dev tun0 || sudo route add 10.8.40.111 dev tun0 || sudo route add 10.8.44.90 dev tun0'
-  alias wikia-vpn-off='sudo cp ~/resolv.conf.deafult /etc/resolv.conf'
-  alias wikia-vpn-on='sudo cp ~/resolv.conf.wikia /etc/resolv.conf'
-}
-
-################################# ALIASES #################################
-
-# tabtab source for yarn package
-# uninstall by removing these lines or running `tabtab uninstall yarn`
-# [[ -f /Users/joshrogan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/joshrogan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source ~/.p10k.zsh
