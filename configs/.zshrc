@@ -60,7 +60,7 @@ addPath "$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
 
 ########### Sourcing ###########
 #include "$HOME/.fzf.zsh"
-#include "$NVM_DIR/nvm.sh"
+include "$NVM_DIR/nvm.sh"
 
 osis Darwin && {
   include "${HOME}/.iterm2_shell_integration.zsh"
@@ -172,10 +172,6 @@ osis Linux && {
   alias wikia-vpn-on='sudo cp ~/resolv.conf.wikia /etc/resolv.conf'
 }
 
-#which -s hub && {
-#    alias git=hub
-#    alias issues="git browse -- issues"
-#}
 ################################# ALIASES #################################
 
 # tabtab source for yarn package
