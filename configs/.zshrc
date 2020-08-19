@@ -27,7 +27,6 @@ addPath(){
 }
 
 ########### Config ###########
-USE_PRESTO=true
 PROJECTS_DIR="${HOME}/projects/"
 PROVISION_DIR="${PROJECTS_DIR}personal-computer-provisioning/"
 FORTUNES_DATA="${HOME}/projects/personal-computer-provisioning/fortunes"
@@ -61,9 +60,16 @@ addPath "$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
 #include "$HOME/.fzf.zsh"
 include "$NVM_DIR/nvm.sh"
 
+########### Mac Only ###########
 osis Darwin && {
   include "${HOME}/.iterm2_shell_integration.zsh"
 }
+
+########### Dev Box Only ###########
+if [[ $(whoami) = "jrogan" ]];
+then
+  echo "Devbox"
+fi
 
 ################################# GREETING #################################
 function welcome(){
