@@ -103,22 +103,24 @@ alias .zshrc='vim ~/.zshrc'
 
 ########### MISC ##########
 alias cal='cal | grep --color -EC6 "\b$(date +%e | sed "s/ //g")"'
-alias cat='bat'
 alias chrome='google-chrome'
 alias clean='sudo pkill -9 php && sudo pkill -9 node && sudo pkill -9 npm && killnode'
 alias ldot='ls -d .*'
 alias killnode='echo "=> Killing nodejs and webpack" && pkill -9 node && pkill -9 webpack-serve && pkill -9 webpack && pkill -9 nohup && pkill -9 wdio && pkill -9 BrowserStackLocal'
 alias lsa='ls -lah'
-alias ping='prettyping'
 alias profile='vim ~/.zshrc'
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 alias reload='source ~/.zshrc'
 alias twitter='rainbowstream'
 alias weather='http wttr.in/94107'
-alias wget='http -d'
 alias wip='git add -A && git cam "WIP"'
 alias wipu='git reset HEAD~'
 alias yarnc='echo "=> Deleting node_modules" && rm -rf node_modules && yarn'
+
+########### CONDITIONAL ALIASES ########## (MUST INSTALL)
+which -s bat 1> /dev/null && alias cat='bat'
+which -s prettyping 1> /dev/null && alias ping='prettyping'
+which -s http 1> /dev/null alias wget='http -d'
 
 ########## APPLICATION OPEN ##########
 alias intellij='open -a "IntelliJ IDEA 3"'
@@ -126,8 +128,9 @@ alias vscode='open -a "Visual Studio Code"'
 
 ########## INTELLI OPENS ##########
 alias f2="intellij ${PROJECTS_DIR}f2"
+alias pandora="intellij ${PROJECTS_DIR}pandora"
 alias personal="intellij ${PROVISION_DIR}"
-alias react-common="intellij ${PROVISION_DIR}react-common"
+alias react-common="intellij ${PROJECTS_DIR}react-common"
 alias ucp="unified-platform"
 alias unified-platform="intellij ${PROJECTS_DIR}unified-platform"
 alias upstream="intellij ${PROJECTS_DIR}upstream"
