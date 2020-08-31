@@ -1,0 +1,3 @@
+http://prod.sjc.k8s.wikia.net/quizzes/quizzes/3
+http://prod.sjc.k8s.wikia.net/quizzes/quizzes/suggested?siteId=130814
+http://prod.sjc.k8s.wikia.net/quizzes/quizzes/suggested?siteId=130814&currentQuizId=3

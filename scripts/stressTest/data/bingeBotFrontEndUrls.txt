@@ -1,0 +1,9 @@
+https://bingebot.fandom.com/
+https://bingebot.fandom.com/?asdf
+https://bingebot.fandom.com/?212323
+https://bingebot.fandom.com/?23434343434
+http://bingebot-front-end-prod.prod.sjc.k8s.wikia.net/
+https://bingebot.fandom.com/static/js/2.ff31c135.chunk.js
+http://bingebot-front-end-prod.prod.sjc.k8s.wikia.net/static/js/2.ff31c135.chunk.js
+https://bingebot.fandom.com/static/css/2.ce0a3828.chunk.css
+http://bingebot-front-end-prod.prod.sjc.k8s.wikia.net/static/css/2.ce0a3828.chunk.css

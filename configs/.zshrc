@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
-zmodload zsh/zprof
+# zmodload zsh/zprof
 
 # Must Install List
 # diff2Html
-# tejira
-# tig
+# has - https://github.com/kdabir/has
+
+# Brew Installs
+# brew install bandwhich -- monitor bandwith by process
+# brew install yank
 
 ########### Helpers ###########
 osis(){
@@ -66,7 +69,7 @@ osis Darwin && {
 }
 
 ########### Dev Box Only ###########
-if [[ $(whoami) = "jrogan" ]]; 
+if [[ $(whoami) = "jrogan" ]];
 then
   echo "Devbox"
   export VAULT_ADDR=https://active.vault.service.sjc.consul:8200
@@ -173,3 +176,4 @@ timezsh() {
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source ~/.p10k.zsh
+[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
