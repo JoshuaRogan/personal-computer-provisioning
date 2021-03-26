@@ -76,6 +76,7 @@ if [[ $(whoami) = "jrogan" ]];
 then
   echo "Devbox"
   export VAULT_ADDR=https://active.vault.service.sjc.consul:8200
+  PROJECTS_DIR="${HOME}/"
 fi
 
 ################################# GREETING #################################
