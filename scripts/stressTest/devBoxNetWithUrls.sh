@@ -12,7 +12,8 @@ TIME="1s"
 
 URLS="${APP_NAME}Urls.txt" # Put in data folder
 LOCAL_URLS_FILE="data/${URLS}"
-outfilename="${APP_NAME}-$(date +%Y%m%d%s).stresstemp.txt"
+outfilename="${APP_NAME}-$(date +%Y-%m-%d-%s).stresstemp.txt"
+echo ${outfilename}
 ################## AB Commands ##################
 
 
